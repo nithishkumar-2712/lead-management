@@ -1,0 +1,11 @@
+const express = require("express");
+const { createLeadStatus,updateLeadStatus,LeadStatusdelete,getLeadStatuses} = require("../controllers/leadStatus.controller");
+const Athucheck = require("../middlewares/Athu");
+const Admincheck = require("../middlewares/Admin");
+const isBlocking = require("../middlewares/Blocking");
+const router = express.Router();
+router.post("/api/leadstatuscreat",createLeadStatus);
+router.get("/api/leadstatusget",Athucheck,isBlocking,getLeadStatuses);
+router.put("/api/leadstatusupdate/:id",Athucheck,isBlocking,Admincheck, updateLeadStatus);
+router.put("/api/leadstatusdelete/:id",Athucheck,isBlocking,Admincheck,LeadStatusdelete);
+module.exports  = router;

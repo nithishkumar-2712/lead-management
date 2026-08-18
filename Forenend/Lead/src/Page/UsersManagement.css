@@ -1,0 +1,471 @@
+.users-page {
+  padding: 20px;
+  margin-top:30px;
+  background: #f9fafb;
+}
+.h2{
+    color: black;
+}
+/* =========================
+   LOADING DESIGN
+========================= */
+
+.users-skeleton-table{
+  background: white;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+}
+
+.sk-title{
+  width: 180px;
+  height: 35px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg,#f1f1f1,#e5e5e5,#f1f1f1);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.sk-row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.sk-box{
+  height: 18px;
+  border-radius: 6px;
+  background: linear-gradient(90deg,#f1f1f1,#e5e5e5,#f1f1f1);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.sk-box.sm{
+  width: 40px;
+}
+
+.sk-user{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.sk-avatar{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(90deg,#f1f1f1,#e5e5e5,#f1f1f1);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.sk-line{
+  width: 120px;
+  height: 16px;
+  border-radius: 6px;
+  background: linear-gradient(90deg,#f1f1f1,#e5e5e5,#f1f1f1);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.sk-line.lg{
+  width: 200px;
+}
+
+.sk-badge{
+  width: 90px;
+  height: 30px;
+  border-radius: 20px;
+  background: linear-gradient(90deg,#f1f1f1,#e5e5e5,#f1f1f1);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.sk-actions{
+  display: flex;
+  gap: 10px;
+}
+
+.sk-btn{
+  width: 80px;
+  height: 35px;
+  border-radius: 8px;
+  background: linear-gradient(90deg,#f1f1f1,#e5e5e5,#f1f1f1);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* =========================
+   ERROR DESIGN
+========================= */
+
+.error-box{
+  width: 100%;
+  max-width: 500px;
+  margin: 80px auto;
+  background: white;
+  padding: 40px;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.error-box h2{
+  color: #ef4444;
+  margin-bottom: 10px;
+}
+
+.error-box p{
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.error-box button{
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.error-box button:hover{
+  opacity: 0.9;
+}
+
+/* =========================
+   SHIMMER ANIMATION
+========================= */
+
+@keyframes shimmer{
+  0%{
+    background-position: -200% 0;
+  }
+
+  100%{
+    background-position: 200% 0;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:768px){
+
+  .sk-row{
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .sk-actions{
+    width: 100%;
+  }
+
+  .sk-btn{
+    flex: 1;
+  }
+
+}
+
+/* Header */
+.users-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.users-header h2 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* Table */
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+}
+
+.users-table th {
+  background: #f3f4f6;
+  padding: 14px;
+  text-align: left;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.users-table td {
+  padding: 14px;
+  border-top: 1px solid #eee;
+}
+
+/* Avatar */
+.user-img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+/* Status */
+.active {
+  color: #16a34a;
+  font-weight: 500;
+}
+.inactive {
+  color: #d41916;
+  font-weight: 500;
+}
+
+.blocked {
+  color: #ef4444;
+  font-weight: 500;
+}
+
+/* Buttons */
+.view-btn {
+  background: #3b82f6;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.block-btn {
+  background: #f59e0b;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.delete-btn {
+  background: #ef4444;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Hover */
+.users-table tr:hover {
+  background: #f9fafb;
+}
+/* =======================
+   TABLE RESPONSIVE FIX
+======================= */
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+}
+
+/* Mobile scroll enable */
+@media (max-width: 1144px) {
+  .users-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+/* =======================
+   BUTTONS RESPONSIVE FIX
+======================= */
+@media (max-width: 600px) {
+  .users-table td {
+    padding: 10px;
+  }
+
+  .view-btn,
+  .block-btn,
+  .delete-btn {
+    display: inline-block;
+    margin-bottom: 5px;
+    padding: 5px 8px;
+    font-size: 12px;
+  }
+}
+
+/* =======================
+   AVATAR SMALL SCREEN FIX
+======================= */
+@media (max-width: 600px) {
+  .user-img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+/* =======================
+   HEADER MOBILE FIX
+======================= */
+@media (max-width: 600px) {
+  .users-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .users-header h2 {
+    font-size: 18px;
+  }
+}
+/* ================= MODAL ================= */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* USER MODAL */
+.user-modal {
+  background: white;
+  width: 90%;
+  max-width: 450px;
+  padding: 20px;
+  border-radius: 14px;
+  animation: pop 0.3s ease;
+}
+
+/* HEADER */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* BODY */
+.modal-body p {
+  margin: 10px 0;
+  font-size: 15px;
+}
+
+/* ANIMATION */
+@keyframes pop {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 500px) {
+  .user-modal {
+    width: 95%;
+  }
+}
+/* =========================
+   SIDEBAR FIX
+========================= */
+
+.users-page{
+  /* margin-left: 270px; */
+  transition: 0.3s;
+  /* min-height: 100vh; */
+}
+
+/* MOBILE */
+
+@media(max-width:1144px){
+
+  /* .users-page{
+    margin-left: 85px;
+  } */
+
+}
+@media (max-width: 670px) {
+
+  /* PAGE FIX - prevent global scroll */
+  .users-page {
+    /* margin-left: 0; */
+    padding: 10px;
+    width: 100%;
+    overflow-x: hidden; /* முக்கியம் */
+  }
+
+  /* HEADER */
+  .users-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .users-header h2 {
+    font-size: 18px;
+  }
+
+  /* 🔥 TABLE WRAPPER FIX (IMPORTANT) */
+  .users-table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;     /* scroll ONLY here */
+    white-space: nowrap;  /* row break prevent */
+    -webkit-overflow-scrolling: touch; /* smooth mobile scroll */
+  }
+
+  /* table inside fix */
+  .users-table table {
+    min-width: 650px;  /* 🔥 scroll trigger width */
+  }
+
+  .users-table th,
+  .users-table td {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .user-img {
+    width: 30px;
+    height: 30px;
+  }
+
+  /* BUTTONS */
+  .view-btn,
+  .block-btn,
+  .delete-btn {
+    padding: 5px 8px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  /* MODAL */
+  .user-modal {
+    width: 95%;
+    padding: 15px;
+  }
+}

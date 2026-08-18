@@ -1,0 +1,215 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+.branch-section {
+  padding: 80px 8%;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.title h1 {
+  font-size: 42px;
+  font-weight: 800;
+  background: linear-gradient(90deg, #2563eb, #10b981);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.title p {
+  color: #64748b;
+  margin-top: 15px;
+}
+
+.head-office {
+  max-width: 1700px;
+  margin: auto;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(15px);
+  border-radius: 30px;
+  text-align: center;
+  border: 1px solid rgba(37, 99, 235, 0.15);
+  margin-bottom: 70px;
+}
+
+.head-icon {
+  width: 90px;
+  height: 90px;
+  margin: auto auto 20px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #2563eb, #10b981);
+  color: #fff;
+  font-size: 38px;
+}
+
+.head-office h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.head-office h3 {
+  color: #2563eb;
+  margin-bottom: 20px;
+}
+
+.head-office p {
+  color: #64748b;
+  line-height: 1.8;
+}
+
+.phone {
+  margin-top: 20px;
+  color: #10b981;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.carousel {
+  overflow: hidden;
+  position: relative;
+  padding: 20px 0;
+}
+
+.track {
+  display: flex;
+  gap: 30px;
+  animation: slide 20s linear infinite;
+}
+
+.carousel:hover .track {
+  animation-play-state: paused;
+}
+
+.cardbranch {
+  min-width: 600px;
+  max-width: 600px;
+  min-height: 100px;
+  padding: 10px;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.95),
+    rgba(240, 248, 255, 0.75)
+  );
+  backdrop-filter: blur(20px);
+  border-radius: 28px;
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  box-shadow: 0 15px 35px rgba(37, 99, 235, 0.12);
+  transition: 0.4s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.cardbranch::before {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  right: -40px;
+  top: -40px;
+  background: linear-gradient(135deg, #2563eb, #10b981);
+  opacity: 0.12;
+  border-radius: 50%;
+}
+
+.cardbranch:hover {
+  transform: translateY(-15px) scale(1.03);
+  box-shadow: 0 25px 60px rgba(37, 99, 235, 0.25);
+  border-color: #2563eb;
+}
+
+.cardbranch:active {
+  transform: scale(0.95);
+}
+
+.icon {
+  width: 65px;
+  height: 65px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #2563eb, #10b981);
+  color: #fff;
+  font-size: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
+  transition: 0.4s;
+}
+
+.cardbranch:hover .icon {
+  transform: rotate(10deg) scale(1.15);
+}
+
+.cardbranch h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #111827;
+}
+
+.cardbranch p {
+  color: #64748b;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.contact {
+  margin-top: 20px;
+  padding: 12px 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 50px;
+  background: #eff6ff;
+  color: #2563eb;
+  font-weight: 700;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 900px) {
+  .cardbranch {
+    min-width: 280px;
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 600px) {
+  .cardbranch {
+    min-width: 260px;
+  }
+
+  .title h1 {
+    font-size: 32px;
+  }
+
+  .head-office {
+    padding: 25px;
+  }
+
+  .head-office h2 {
+    font-size: 26px;
+  }
+}

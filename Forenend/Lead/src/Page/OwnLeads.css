@@ -1,0 +1,829 @@
+/* =========================================================
+   OWN LEAD - PREMIUM CRM FORM
+========================================================= */
+
+.own-lead-container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px 50px 60px;
+  box-sizing: border-box;
+  background: #f5f7fb;
+  font-family: "Poppins", sans-serif;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.own-lead-header {
+  width: 100%;
+  min-height: 150px;
+  padding: 32px 38px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb 0%,
+      #1d4ed8 55%,
+      #1e40af 100%
+    );
+
+  color: #ffffff;
+
+  position: relative;
+  overflow: hidden;
+
+  box-shadow:
+    0 20px 45px rgba(37, 99, 235, 0.20);
+
+  margin-bottom: 30px;
+}
+
+.own-lead-header::before {
+  content: "";
+  position: absolute;
+
+  width: 280px;
+  height: 280px;
+
+  right: -100px;
+  top: -150px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.10);
+}
+
+.own-lead-header::after {
+  content: "";
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  right: 120px;
+  bottom: -130px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.own-lead-header h2 {
+  position: relative;
+  z-index: 2;
+
+  margin: 0;
+
+  font-size: 30px;
+  font-weight: 700;
+
+  letter-spacing: -0.5px;
+}
+
+.own-lead-header p {
+  position: relative;
+  z-index: 2;
+
+  margin: 8px 0 0;
+
+  font-size: 14px;
+  font-weight: 400;
+
+  color: rgba(255, 255, 255, 0.85);
+}
+
+
+/* =========================================================
+   MAIN FORM CARD
+========================================================= */
+
+.lead-form-card {
+  width: 100%;
+
+  background: #ffffff;
+
+  border: 1px solid #e8edf5;
+
+  border-radius: 24px;
+
+  padding: 38px;
+
+  box-sizing: border-box;
+
+  box-shadow:
+    0 15px 40px rgba(15, 23, 42, 0.06);
+}
+
+
+/* =========================================================
+   SECTION TITLE
+========================================================= */
+
+.section-title {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  margin-top: 10px;
+  margin-bottom: 28px;
+
+  padding-bottom: 18px;
+
+  border-bottom: 1px solid #edf0f5;
+}
+
+.section-title span {
+  width: 46px;
+  height: 46px;
+
+  min-width: 46px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 13px;
+
+  background: #eff6ff;
+
+  font-size: 21px;
+
+  box-shadow:
+    0 5px 15px rgba(37, 99, 235, 0.08);
+}
+
+.section-title h3 {
+  margin: 0;
+
+  font-size: 19px;
+  font-weight: 650;
+
+  color: #172033;
+}
+
+.section-title h3::after {
+  content: "Required information";
+
+  display: block;
+
+  margin-top: 4px;
+
+  font-size: 11px;
+  font-weight: 400;
+
+  color: #94a3b8;
+}
+
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.lead-grid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  column-gap: 26px;
+  row-gap: 24px;
+
+  margin-bottom: 42px;
+}
+
+
+/* =========================================================
+   INPUT GROUP
+========================================================= */
+
+.lead-input-group {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 9px;
+
+  position: relative;
+}
+
+.lead-input-group.full {
+  grid-column: 1 / -1;
+}
+
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.lead-input-group label {
+  color: #334155;
+
+  font-size: 12px;
+
+  font-weight: 650;
+
+  letter-spacing: 0.25px;
+
+  padding-left: 2px;
+}
+
+
+/* =========================================================
+   INPUT / SELECT / TEXTAREA
+========================================================= */
+
+.lead-input-group input,
+.lead-input-group select,
+.lead-input-group textarea {
+
+  width: 100%;
+
+  box-sizing: border-box;
+
+  border: 1px solid #dbe2ec;
+
+  background: #f8fafc;
+
+  color: #172033;
+
+  border-radius: 13px;
+
+  padding: 14px 16px;
+
+  font-family: "Poppins", sans-serif;
+
+  font-size: 13px;
+
+  font-weight: 500;
+
+  outline: none;
+
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.20s ease;
+}
+
+
+/* =========================================================
+   INPUT HEIGHT
+========================================================= */
+
+.lead-input-group input,
+.lead-input-group select {
+  height: 52px;
+}
+
+
+/* =========================================================
+   PLACEHOLDER
+========================================================= */
+
+.lead-input-group input::placeholder,
+.lead-input-group textarea::placeholder {
+
+  color: #a0aec0;
+
+  font-size: 12px;
+
+  font-weight: 400;
+}
+
+
+/* =========================================================
+   SELECT
+========================================================= */
+
+.lead-input-group select {
+
+  cursor: pointer;
+
+  appearance: none;
+
+  background-image:
+    linear-gradient(45deg, transparent 50%, #64748b 50%),
+    linear-gradient(135deg, #64748b 50%, transparent 50%);
+
+  background-position:
+    calc(100% - 19px) 22px,
+    calc(100% - 14px) 22px;
+
+  background-size:
+    5px 5px,
+    5px 5px;
+
+  background-repeat: no-repeat;
+}
+
+
+/* =========================================================
+   TEXTAREA
+========================================================= */
+
+.lead-input-group textarea {
+
+  min-height: 120px;
+
+  resize: vertical;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   FOCUS EFFECT
+========================================================= */
+
+.lead-input-group input:focus,
+.lead-input-group select:focus,
+.lead-input-group textarea:focus {
+
+  background: #ffffff;
+
+  border-color: #2563eb;
+
+  box-shadow:
+    0 0 0 4px rgba(37, 99, 235, 0.09),
+    0 8px 20px rgba(37, 99, 235, 0.05);
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   HOVER EFFECT
+========================================================= */
+
+.lead-input-group input:hover,
+.lead-input-group select:hover,
+.lead-input-group textarea:hover {
+
+  border-color: #b9c5d6;
+
+  background: #ffffff;
+}
+
+
+/* =========================================================
+   DATE INPUT
+========================================================= */
+
+.lead-input-group input[type="date"] {
+
+  color: #475569;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   SAVE BUTTON AREA
+========================================================= */
+
+.lead-form-actions {
+
+  width: 100%;
+
+  display: flex;
+
+  justify-content: flex-end;
+
+  align-items: center;
+
+  padding-top: 10px;
+
+  border-top: 1px solid #edf0f5;
+}
+
+
+/* =========================================================
+   SAVE BUTTON
+========================================================= */
+
+.update-btn {
+
+  min-width: 170px;
+
+  height: 52px;
+
+  border: none;
+
+  border-radius: 13px;
+
+  padding: 0 28px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #1d4ed8
+    );
+
+  color: #ffffff;
+
+  font-family: "Poppins", sans-serif;
+
+  font-size: 13px;
+
+  font-weight: 650;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow:
+    0 10px 25px rgba(37, 99, 235, 0.22);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.update-btn:hover {
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 15px 30px rgba(37, 99, 235, 0.30);
+}
+
+.update-btn:active {
+
+  transform: translateY(0);
+
+  box-shadow:
+    0 6px 15px rgba(37, 99, 235, 0.20);
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+  .own-lead-container {
+    padding: 30px 25px 50px;
+  }
+
+  .lead-form-card {
+    padding: 28px;
+  }
+
+  .lead-grid {
+    column-gap: 20px;
+  }
+
+  .own-lead-header h2 {
+    font-size: 26px;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .own-lead-container {
+
+    padding: 15px 12px 35px;
+
+  }
+
+  .own-lead-header {
+
+    min-height: 100px;
+
+    padding: 24px 20px;
+
+    border-radius: 18px;
+
+    margin-bottom: 10px;
+  }
+  .own-lead-header::before {
+  content: "";
+  position: absolute;
+
+  width: 280px;
+  height: 226px;
+
+  right: -100px;
+  top: -150px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.10);
+}
+
+.own-lead-header::after {
+  content: "";
+  position: absolute;
+
+  width: 180px;
+  height: 163px;
+
+  right: 120px;
+  bottom: -130px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+  .own-lead-header h2 {
+
+    font-size: 21px;
+
+  }
+label{
+  margin: 0px;
+}
+  .own-lead-header p {
+
+    font-size: 12px;
+
+  }
+
+  .lead-form-card {
+
+    padding: 20px 16px;
+
+    border-radius: 18px;
+
+  }
+
+  .section-title {
+
+    /* margin-bottom: 20px; */
+
+    padding-bottom: 14px;
+
+  }
+
+  .section-title span {
+
+    width: 40px;
+    height: 40px;
+
+    min-width: 40px;
+
+    font-size: 18px;
+
+  }
+
+  .section-title h3 {
+
+    font-size: 16px;
+
+  }
+
+  .lead-grid {
+
+    grid-template-columns: 1fr;
+
+    gap:8px;
+
+    margin-bottom: 32px;
+
+  }
+
+  .lead-input-group.full {
+
+    grid-column: auto;
+
+  }
+
+  .lead-input-group input,
+  .lead-input-group select {
+
+    height:44px;
+
+  }
+  .lead-input-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* gap: 9px; */
+    position: relative;
+}
+
+  .lead-input-group textarea {
+
+    min-height: 110px;
+
+  }
+
+  .lead-form-actions {
+
+    justify-content: stretch;
+
+  }
+
+  .update-btn {
+
+    width: 100%;
+
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .own-lead-container {
+
+    padding: 10px 8px 25px;
+
+  }
+
+  .lead-form-card {
+
+    padding: 17px 13px;
+
+  }
+
+  .own-lead-header {
+
+    padding: 20px 16px;
+
+  }
+
+  .own-lead-header h2 {
+
+    font-size: 19px;
+
+  }
+
+  .section-title h3 {
+
+    font-size: 15px;
+
+  }
+
+  .lead-input-group input,
+  .lead-input-group select,
+  .lead-input-group textarea {
+
+    font-size: 12px;
+
+  }
+}
+/* =========================================================
+   LAPTOP / DESKTOP - BIGGER UI
+========================================================= */
+
+@media (min-width: 1001px) {
+
+  .own-lead-header h2 {
+    font-size: 34px;
+  }
+
+  .own-lead-header p {
+    font-size: 15px;
+  }
+
+  .section-title h3 {
+    font-size: 21px;
+  }
+
+  .section-title h3::after {
+    font-size: 12px;
+  }
+
+  .lead-input-group label {
+    font-size: 14px;
+  }
+
+  .lead-input-group input,
+  .lead-input-group select {
+    height: 58px;
+    padding: 16px 18px;
+    font-size: 15px;
+    border-radius: 14px;
+  }
+
+  .lead-input-group textarea {
+    min-height: 140px;
+    padding: 16px 18px;
+    font-size: 15px;
+    border-radius: 14px;
+  }
+
+  .lead-input-group input::placeholder,
+  .lead-input-group textarea::placeholder {
+    font-size: 14px;
+  }
+
+  .lead-input-group select {
+    font-size: 15px;
+  }
+
+  .update-btn {
+    height: 58px;
+    min-width: 190px;
+    font-size: 15px;
+  }
+}
+/* =========================================================
+   SUCCESS DETAILS
+========================================================= */
+
+.success-section-title {
+  margin-top: 5px;
+}
+
+.success-section-title span {
+  background: #ecfdf5;
+  color: #059669;
+  box-shadow: 0 5px 15px rgba(5, 150, 105, 0.08);
+}
+
+.success-section-title h3 {
+  color: #047857;
+}
+
+.success-lead-grid {
+  padding: 24px;
+  margin-top: -8px;
+
+  border-radius: 18px;
+
+  background: #f8fffc;
+
+  border: 1px solid #d1fae5;
+}
+
+
+/* Success inputs */
+
+.success-lead-grid .lead-input-group input {
+  background: #ffffff;
+}
+
+.success-lead-grid .lead-input-group input:focus {
+  border-color: #10b981;
+
+  box-shadow:
+    0 0 0 4px rgba(16, 185, 129, 0.09),
+    0 8px 20px rgba(16, 185, 129, 0.05);
+}
+
+
+/* Error */
+
+.lead-input-group small.error {
+  color: #dc2626;
+  font-size: 11px;
+  font-weight: 500;
+  min-height: 16px;
+}
+.update-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 120px;
+}
+
+.update-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.button-spinner {
+  width: 15px;
+  height: 15px;
+  border: 3px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: buttonSpin 0.7s linear infinite;
+}
+
+@keyframes buttonSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}

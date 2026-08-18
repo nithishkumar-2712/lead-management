@@ -1,0 +1,332 @@
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #eef2f7, #dfe9f3);
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* ================================
+   MAIN CONTAINER
+================================ */
+
+.crm-container {
+  width: calc(100% - 40px);
+  max-width: 1900px;
+  margin: 20px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+/* ================================
+   TITLE
+================================ */
+
+.crm-container h2 {
+  text-align: center;
+  margin: 0 0 20px;
+  font-size: 24px;
+}
+
+/* ================================
+   SECTION
+================================ */
+
+.section {
+  background: #f9fafc;
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 12px;
+  border: 1px solid #e6e6e6;
+  box-sizing: border-box;
+}
+
+.section h3 {
+  margin: 0 0 15px;
+  border-left: 4px solid #007bff;
+  padding-left: 8px;
+  font-size: 18px;
+}
+
+/* ================================
+   GRID
+================================ */
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+}
+
+/* ================================
+   FIELD
+================================ */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+}
+
+.field label {
+  margin-bottom: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* ================================
+   INPUT / SELECT / TEXTAREA
+================================ */
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+  transition: 0.2s;
+}
+
+/* Input height */
+
+.field input,
+.field select {
+  height: 42px;
+}
+
+/* Textarea */
+
+.field textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+/* Focus */
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
+}
+
+/* ================================
+   SEARCH BOX
+================================ */
+
+.search-boox {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+/* Search input */
+
+.search-boox input {
+  flex: 1;
+  min-width: 0;
+  height: 42px;
+  padding: 10px 12px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  outline: none;
+}
+
+.search-boox input:focus {
+  border-color: #007bff;
+}
+
+/* ================================
+   BUTTON
+================================ */
+
+.button {
+  margin-top: 5px;
+  min-width: 120px;
+  height: 42px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #007bff, #0056d2);
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+  box-sizing: border-box;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 12px rgba(0, 86, 210, 0.25);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+/* =================================================
+   TABLET
+================================================= */
+
+@media (max-width: 1000px) {
+
+  .row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .crm-container {
+    width: calc(100% - 30px);
+    padding: 15px;
+  }
+}
+
+/* =================================================
+   MOBILE
+================================================= */
+
+@media (max-width: 768px) {
+
+  body {
+    background: #eef2f7;
+  }
+
+  .crm-container {
+    width: calc(100% - 20px);
+    margin: 10px auto;
+    padding: 12px;
+    border-radius: 12px;
+  }
+
+  .crm-container h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .section {
+    padding: 12px;
+    margin-top: 12px;
+    border-radius: 10px;
+  }
+
+  .section h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  /* One column on mobile */
+
+  .row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* Field */
+
+  .field {
+    width: 100%;
+  }
+
+  /* Inputs */
+
+  .field input,
+  .field select {
+    width: 100%;
+    height: 44px;
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  /* Textarea */
+
+  .field textarea {
+    width: 100%;
+    min-height: 100px;
+    font-size: 14px;
+  }
+
+  /* Search */
+
+  .search-boox {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .search-boox input {
+    width: 100%;
+    height: 44px;
+    flex: none;
+  }
+
+  .search-boox .button {
+    width: 100%;
+    height: 44px;
+    margin-top: 0;
+  }
+
+  /* Update button */
+
+  .button {
+    width: 100%;
+    height: 44px;
+    margin-top: 12px;
+    font-size: 14px;
+  }
+}
+
+/* =================================================
+   SMALL MOBILE
+================================================= */
+
+@media (max-width: 480px) {
+
+  .crm-container {
+    width: calc(100% - 12px);
+    margin: 6px auto;
+    padding: 10px;
+  }
+
+  .section {
+    padding: 10px;
+  }
+
+  .section h3 {
+    font-size: 15px;
+  }
+
+  .field input,
+  .field select {
+    height: 42px;
+    font-size: 13px;
+  }
+
+  .field textarea {
+    min-height: 90px;
+    font-size: 13px;
+  }
+
+  .search-boox input {
+    height: 42px;
+    font-size: 13px;
+  }
+
+  .button,
+  .search-boox .button {
+    height: 42px;
+    font-size: 13px;
+  }
+}
