@@ -11,7 +11,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
-const Leadexcutivetable = ({ data }) => {
+const Leadexcutivetable = ({ data,onLeadUpdated }) => {
     const navigate = useNavigate();
     // console.log(data)
     const hasValue = (value) => {
@@ -81,7 +81,7 @@ const handleUpdateLead = async (formData) => {
       `/api/update-lead/${editLead._id}`,
       formData
     );
-
+    reset();
     if (data.success) {
        setOpenModal(false);
       await Swal.fire({
@@ -92,11 +92,11 @@ const handleUpdateLead = async (formData) => {
         timer: 2000,
         showConfirmButton: false,
       });
+ 
+        if (onLeadUpdated) {
+            await onLeadUpdated();
+        }
 
-
-      reset();
-
-      window.location.reload();
 
     } else {
 

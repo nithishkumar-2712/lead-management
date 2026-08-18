@@ -24,6 +24,7 @@ function BranchHead() {
   const {
     Data: Leadcount,
     Loading: LeadLoading,
+    CustomHook: RefreshLeads,
   } = Customhook("/api/user-leads");
 
   // =====================================================
@@ -697,6 +698,7 @@ function BranchHead() {
             tableData.length > 0 && (
               <Leadheadertable
                 data={tableData}
+                onLeadUpdated={RefreshLeads}
               />
             )}
         </div>

@@ -1,17 +1,18 @@
 const express = require("express");
-const { Register,FetchUser,Login,Logout,getExecutives,profileget,OwnBranchExecutives,getuserExecutivelead,getBranchHeads,profile,blockUser} = require("../controllers/user.controller");
+const { Register,FetchUser,Login,Logout,getExecutives,profileget,getuserExecutivelead,getBranchHeads,profile,blockUser} = require("../controllers/user.controller");
 const Athucheck = require("../middlewares/Athu");
 const Leadcheck = require("../middlewares/LeadCheck");
 const BranchHeadcheck = require("../middlewares/BranchHead");
 const Admincheck = require("../middlewares/Admin");
 const isBlocking = require("../middlewares/Blocking");
+const Loginratelimit = require("../middlewares/Rate-limit");
 const route = express.Router();
 // Admin router
 route.get("/api/Fetchuser",Athucheck,isBlocking,Admincheck,FetchUser);
 route.post("/api/register",Register);
 route.put("/api/blockUser/:id",Athucheck,isBlocking,Admincheck,blockUser );
-// User router
-route.post("/api/login", Login);
+// User router Loginratelimit
+route.post("/api/login",Loginratelimit,Login);
 route.post("/api/Logout",Athucheck, Logout);
 route.post("/api/Prfofil",Athucheck,isBlocking, profileget);
 

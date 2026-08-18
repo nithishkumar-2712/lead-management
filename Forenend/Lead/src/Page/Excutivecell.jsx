@@ -10,7 +10,7 @@ function Excutivecell() {
         Loading: LeadLoading,
         CustomHook
     } = Customhook("/api/Allservicecells");
-    console.log(Leadget);
+    // console.log(Leadget);
 const [viewLead, setViewLead] = useState(null);
 const [showViewModal, setShowViewModal] = useState(false);
 

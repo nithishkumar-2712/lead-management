@@ -119,12 +119,12 @@ const searchLead = async () => {
       `/api/lead/search/${searchId.trim()}`
     );
 
-    console.log("SEARCH RESPONSE:", data);
+    // console.log("SEARCH RESPONSE:", data);
 
     if (data.success && data.data) {
       const lead = data.data;
 
-      console.log("Lead Data:", lead);
+      // console.log("Lead Data:", lead);
 
       // =====================================================
       // API DATA -> REACT HOOK FORM
@@ -234,10 +234,10 @@ const searchLead = async () => {
 
   } catch (err) {
 
-    console.log(
-      "Search Lead Error:",
-      err.response?.data || err.message
-    );
+    // console.log(
+    //   "Search Lead Error:",
+    //   err.response?.data || err.message
+    // );
 
     // =====================================================
     // API / SERVER ERROR
@@ -269,7 +269,7 @@ const updateLead = async (formData) => {
       formData
     );
 
-    console.log("UPDATE RESPONSE:", response.data);
+    // console.log("UPDATE RESPONSE:", response.data);
 
     if (response.data?.success) {
       await Swal.fire({
@@ -294,10 +294,10 @@ const updateLead = async (formData) => {
     }
 
   } catch (err) {
-    console.log(
-      "Update Lead Error:",
-      err.response?.data || err.message
-    );
+    // console.log(
+    //   "Update Lead Error:",
+    //   err.response?.data || err.message
+    // );
 
     Swal.fire({
       icon: "error",

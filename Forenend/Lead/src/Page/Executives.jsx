@@ -25,7 +25,7 @@ const {register,handleSubmit,reset,  formState: { errors },} = useForm();
   Data: Todaycells,
   Loading: TodayLoading,
 } = Customhook("/api/Todaycell");
-console.log(Todaycells);
+// console.log(Todaycells);
 
 const {
   Data: counts,

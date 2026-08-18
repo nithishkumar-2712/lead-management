@@ -62,7 +62,7 @@ const onSubmit = async (formData) => {
         showConfirmButton: false,
       });
 
-      navigate("/Executives");
+      navigate("/");
     } else {
       Swal.fire({
         icon: "warning",

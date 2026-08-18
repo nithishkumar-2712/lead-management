@@ -112,6 +112,7 @@ const tokencheck = async () => {
           )}
           {Role === "Branch Head" && (
             <>
+            <Route path="/" element={<Home/>} />
               <Route path="/OwnLeads" element={<OwnLeads/>} />
               <Route path="/BranchHead" element={<BranchHead/>} />
               <Route path="/Executives" element={<Executives/>} />
@@ -122,6 +123,7 @@ const tokencheck = async () => {
           )}
           {Role === "Executives" && (
             <>
+              <Route path="/" element={<Home/>} />
               <Route path="/OwnLeads" element={<OwnLeads/>} />
               <Route path="/ExecutivesPage" element={<ExecutivesPage/>} />
               <Route path="/Executives" element={<Executives/>} />

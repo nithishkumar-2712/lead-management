@@ -141,52 +141,80 @@ function UsersManagement() {
             <button className="view-btn" onClick={() => navigate("/signup")}>User Creat</button>
           </div>
 
-          <table className="users-table">
-            <thead>
-              <tr>
-                <th>S.No</th>
-                <th>Avatar</th>
-                <th>Name</th>
-                {/* <th>Email</th> */}
-                <th>Role</th>
-                <th>Branch</th>
-                {/* <th>Zone</th> */}
-                {/* <th>Number</th> */}
-                <th>Status</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {Userdata.map((items, index) => (
-                <tr key={index}>
-                  <td>{index+1}</td>
-                  <td>
-                    <img
-                      src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-                      className="user-img"
-                    />
-                  </td>
-                  <td>{items.username}</td>
-                  {/* <td>{items.Email}</td> */}
-                  <td>{items.userType.roleName}</td>
-                  <td>{items.branch.branchName}</td>
-                  {/* <td>{items.Zone}</td> */}
-                  {/* <td>{items.Number}</td> */}
-                  <td><span className={items.isBlocked?"active":"inactive"}>{items.isBlocked?"Active":"inActive"}</span></td>
-                  <td>
-                    <button className="view-btn" onClick={() => handleView(items)}>View</button>
-                    <button
-                      className="block-btn"
-                      onClick={() => handleUpdate(items._id, items.isBlocked)}
-                    >
-                      {items.isBlocked ? "Unblock" : "Block"}
-                    </button>
-                  </td>
+          <div className="users-table-wrapper">
+            <table className="users-table">
+              <thead>
+                <tr>
+                  <th>S.No</th>
+                  <th>Avatar</th>
+                  <th>Name</th>
+                  <th>Role</th>
+                  <th>Branch</th>
+                  <th>Status</th>
+                  <th>Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+
+              <tbody>
+                {Userdata.map((items, index) => (
+                  <tr key={items._id || index}>
+                    <td>{index + 1}</td>
+
+                    <td>
+                      <img
+                        src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+                        className="user-img"
+                        alt="user"
+                      />
+                    </td>
+
+                    <td>{items.username || "-"}</td>
+
+                    <td>
+                      {items.userType?.roleName || "-"}
+                    </td>
+
+                    <td>
+                      {items.branch?.branchName || "-"}
+                    </td>
+
+                    <td>
+                      <span
+                        className={
+                          items.isBlocked ? "activeee" : "inactive"
+                        }
+                      >
+                        {items.isBlocked ? "Active" : "Inactive"}
+                      </span>
+                    </td>
+
+                    <td>
+                      <div className="user-action-buttons">
+                        <button
+                          className="view-btn"
+                          onClick={() => handleView(items)}
+                        >
+                          View
+                        </button>
+
+                        <button
+                          className="block-btn"
+                          onClick={() =>
+                            handleUpdate(
+                              items._id,
+                              items.isBlocked
+                            )
+                          }
+                        >
+                          {items.isBlocked ? "Unblock" : "Block"}
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
 
         {/* ================= MODAL ================= */}
@@ -201,7 +229,7 @@ function UsersManagement() {
 
               <div className="modal-body">
 
-                <p><b>Username:</b> {selectedUser.Username || "nithish"}</p>
+                <p><b>Username:</b> {selectedUser.username || "nithish"}</p>
                 <p><b>branch:</b> {selectedUser.branch.branchName}</p>
                 <p><b>userType:</b> {selectedUser.userType.roleName}</p>
                 {/* <p><b>Zone:</b> {selectedUser.Zone}</p> */}

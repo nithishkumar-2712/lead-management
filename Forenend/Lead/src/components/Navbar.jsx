@@ -206,6 +206,13 @@ useEffect(() => {
                             <li>
                                 <Link to="/AdminPage"onClick={closeMenu}>Dashboard</Link>
                             </li>
+
+                            <li>
+                                <Link to="/AdminInsulationpage"onClick={closeMenu}>Insulation</Link>
+                            </li>
+                            <li>
+                                <Link to="/LeadManagement"onClick={closeMenu}>Lead</Link>
+                            </li>
                             <li
                                 className="dropdown"
                                 onMouseMove={() => setShowMaster(true)}
@@ -217,22 +224,16 @@ useEffect(() => {
 
                                 {showMaster && (
                                 <ul className="dropdown-menu">
+                                    <li><Link to="/UsersManagement"onClick={closeMenu}>User</Link></li>
+                                    <li><Link to="/BusinessType"onClick={closeMenu}>Business</Link></li>
+                                    <li><Link to="/Leadsourse"onClick={closeMenu}>Lead Source</Link></li>
                                     <li><Link to="/UserRole"onClick={closeMenu}>Role</Link></li>
                                     <li><Link to="/BranchCreat"onClick={closeMenu}>Branch</Link></li>
                                     <li><Link to="/Creatstatus"onClick={closeMenu}>Status</Link></li>
-                                    <li><Link to="/BusinessType"onClick={closeMenu}>Business</Link></li>
-                                    <li><Link to="/Leadsourse"onClick={closeMenu}>Lead Source</Link></li>
-                                    <li><Link to="/UsersManagement"onClick={closeMenu}>User</Link></li>
                                     {/* <li><Link to="/LeadManagement"onClick={closeMenu}>Lead</Link></li> */}
                                     {/* <li><Link to="/Excutivecell"onClick={closeMenu}>Cells</Link></li> */}
                                 </ul>
                                 )}
-                            </li>
-                            <li>
-                                <Link to="/AdminInsulationpage"onClick={closeMenu}>Insulation</Link>
-                            </li>
-                            <li>
-                                <Link to="/LeadManagement"onClick={closeMenu}>Lead</Link>
                             </li>
                     </ul>
                     </>

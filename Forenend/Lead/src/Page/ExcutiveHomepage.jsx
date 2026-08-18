@@ -4,7 +4,6 @@ import Customhook from "../components/Customhook";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import Leadexcutivetable from "./Leadexcutivetable";
-
 import {
   FaCalendarCheck,
   FaPhoneAlt,
@@ -23,6 +22,7 @@ function ExcutiveHomepage() {
   const {
     Data: Leadcount,
     Loading: LeadLoading,
+    CustomHook: RefreshLeads,
   } = Customhook("/api/Excutive-leads");
 
 
@@ -769,6 +769,7 @@ function ExcutiveHomepage() {
 
               <Leadexcutivetable
                 data={tableData}
+                onLeadUpdated={RefreshLeads}
               />
 
             )}

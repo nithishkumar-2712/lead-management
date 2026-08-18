@@ -11,7 +11,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 // import { useNavigate } from "react-router-dom";
 
-const Leadheadertable = ({ data }) => {
+const Leadheadertable = ({ data ,onLeadUpdated}) => {
     const navigate = useNavigate();
     // console.log(data)
 const {
@@ -76,7 +76,7 @@ const handleAssign = async (formData) => {
                 assignedExecutive,
             }
         );
-
+        reset();
         if (data.success) {
             setShowAssignModal(false);
 
@@ -88,9 +88,9 @@ const handleAssign = async (formData) => {
                 timer: 2000,
                 showConfirmButton: false,
             });
-
-            reset();
-            window.location.reload();
+            if (onLeadUpdated) {
+                await onLeadUpdated();
+            }
 
         } else {
             Swal.fire({
@@ -125,7 +125,7 @@ const handleUpdateLead = async (formData) => {
       `/api/update-lead/${editLead._id}`,
       formData
     );
-
+    reset();
     if (data.success) {
      setOpenModal(false);
       await Swal.fire({
@@ -138,11 +138,10 @@ const handleUpdateLead = async (formData) => {
       });
 
   
-      reset();
-      CustomHook();
 
-      // If needed
-      window.location.reload();
+        if (onLeadUpdated) {
+            await onLeadUpdated();
+        }
 
     } else {
 

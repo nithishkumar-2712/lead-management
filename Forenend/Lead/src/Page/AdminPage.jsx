@@ -29,6 +29,7 @@ const AdminPage = () => {
     Data: Leadcount = [],
     Loading: LeadLoading,
   } = Customhook("/api/leadget");
+  // console.log(Leadcount)
 
   const {
     Data: InsulationData = [],
@@ -40,6 +41,95 @@ const AdminPage = () => {
     Loading: userLoading,
   } = Customhook("/api/Fetchuser");
 
+
+const userStatistics = useMemo(() => {
+
+  if (!Leadcount?.length) {
+    return [];
+  }
+
+  const today = new Date();
+
+  const startOfMonth = new Date(
+    today.getFullYear(),
+    today.getMonth(),
+    1
+  );
+
+  startOfMonth.setHours(0, 0, 0, 0);
+
+  const endOfMonth = new Date(
+    today.getFullYear(),
+    today.getMonth() + 1,
+    0
+  );
+
+  endOfMonth.setHours(23, 59, 59, 999);
+
+  const userMap = {};
+
+  Leadcount.forEach((lead) => {
+
+    // Success மட்டும்
+    if (lead.status?.name !== "Success") {
+      return;
+    }
+
+    // This Month மட்டும்
+    const leadDate = new Date(lead.updatedAt);
+
+    if (
+      leadDate < startOfMonth ||
+      leadDate > endOfMonth
+    ) {
+      return;
+    }
+
+    let userId;
+    let username;
+    let role;
+
+    // Executive இருந்தால் Executive
+    if (lead.assignedExecutive?._id) {
+
+      userId = lead.assignedExecutive._id;
+      username = lead.assignedExecutive.username;
+      role = "Executive";
+
+    }
+
+    // Executive இல்லாமல் Branch Head இருந்தால் Branch Head
+    else if (lead.assignBranchHead?._id) {
+
+      userId = lead.assignBranchHead._id;
+      username = lead.assignBranchHead.username;
+      role = "Branch Head";
+
+    }
+
+    // இரண்டும் இல்லையென்றால் skip
+    else {
+      return;
+    }
+
+    if (!userMap[userId]) {
+
+      userMap[userId] = {
+        userId,
+        username,
+        role,
+        successCount: 0
+      };
+
+    }
+
+    userMap[userId].successCount++;
+
+  });
+
+  return Object.values(userMap);
+
+}, [Leadcount]);
 
   // =========================
   // MONTH NAMES
@@ -384,25 +474,41 @@ if (LeadLoading || InsulationLoading || userLoading) {
 
 
         {/* ================= USER STATISTICS ================= */}
+<div className="chart-box">
+  <h2>User Statistics</h2>
 
-        <div className="chart-box">
+  <div className="user-statistics">
 
-          <h2>
-            User Statistics
-          </h2>
+    {userStatistics.length > 0 ? (
+      userStatistics.map((user, index) => (
+        <div className="user-stat-row" key={user.userId || index}>
 
-          <div
-            style={{
-              height: "300px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
+          <div className="user-stat-info">
+            <div className="user-avatar">
+              {user.username?.charAt(0)?.toUpperCase()}
+            </div>
 
+            <div>
+              <h4>{user.username}</h4>
+              <p>{user.role}</p>
+            </div>
+          </div>
+
+          <div className="success-count">
+            <strong>{user.successCount}</strong>
+            <span>Success</span>
           </div>
 
         </div>
+      ))
+    ) : (
+      <div className="no-user-data">
+        No Success Leads This Month
+      </div>
+    )}
+
+  </div>
+</div>
 
       </div>
 

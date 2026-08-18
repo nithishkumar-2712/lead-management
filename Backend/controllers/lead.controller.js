@@ -197,7 +197,8 @@ const updateLeadREayleadupdate = async (req, res) => {
       req.params.id,
       {calledMobileNumber,remarks,software,leadSource,status,referenceDetails,ifCallLater,district,reasonReject
       },
-      { new: true }
+      { returnDocument: "after",
+        runValidators: true, }
       
     );
     const demostatus= await LeadstatusModel.findById(lead.status)
@@ -279,6 +280,7 @@ const updateCreatLead = async (req, res) => {
       req.body,
       {
         returnDocument: "after",
+        runValidators: true,
       }
     );
 
@@ -325,7 +327,8 @@ const LeadEdit = async (req, res) => {
     const lead = await LeadModel.findByIdAndUpdate(
       req.params.id,
       req.body,
-      { new: true }
+      { returnDocument: "after",
+        runValidators: true, }
     );
 
     res.status(200).json({
@@ -429,7 +432,8 @@ const assignExecutive = async (req, res) => {
       {
         assignedExecutive,
       },
-      { returnDocument: "after", }
+      { returnDocument: "after",
+        runValidators: true,}
     );
 
     if (!lead) {
@@ -501,7 +505,7 @@ const updateLeadstatus = async (req, res) => {
         nextDemoDate:nextDemoDate
       },
       {
-        new: true,
+        returnDocument: "after",
         runValidators: true,
       }
     );
@@ -542,7 +546,7 @@ const updateLeadstatus = async (req, res) => {
     });
 
   } catch (error) {
-    console.error(error);
+    // console.error(error);
 
     return res.status(500).json({
       success: false,
@@ -556,7 +560,9 @@ const Leaddelete = async (req, res) => {
   try {
     await LeadModel.findByIdAndUpdate(
       req.params.id,
-      { isActive: isActive }
+      { isActive: isActive },
+      {        returnDocument: "after",
+        runValidators: true,}
     );
 
     res.json({
@@ -656,8 +662,8 @@ const OwnLeadinsulation = async (req, res) => {
     // User belongs to which branch?
     const assignBranch = user.branch;
 
-    console.log("User ID:", user._id);
-    console.log("User Branch:", assignBranch);
+    // console.log("User ID:", user._id);
+    // console.log("User Branch:", assignBranch);
 
     if (!assignBranch) {
       return res.status(400).json({
@@ -699,7 +705,7 @@ const OwnLeadinsulation = async (req, res) => {
 
     const branchHeadId = branchHead._id;
 
-    console.log("Branch Head ID:", branchHeadId);
+    // console.log("Branch Head ID:", branchHeadId);
 
     // =====================================
     // 4. Create Lead
@@ -922,10 +928,10 @@ const updateLeadEdit = async (req, res) => {
     });
 
   } catch (error) {
-    console.log(
-      "Update Lead Error:",
-      error
-    );
+    // console.log(
+    //   "Update Lead Error:",
+    //   error
+    // );
 
     return res.status(500).json({
       success: false,

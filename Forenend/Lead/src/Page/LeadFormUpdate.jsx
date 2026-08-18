@@ -12,7 +12,7 @@ const { id } = useParams();
 const location = useLocation();
 
 const leadData = location.state;
-console.log(leadData)
+// console.log(leadData)
 const [isSubmitting, setIsSubmitting] = useState(false);
 const {
   register,
@@ -25,7 +25,7 @@ useEffect(() => {
   if (leadData) {
     reset({
       mobile: leadData.mobile || "",
-      software: leadData.anySoftware || "",
+      // software: leadData.anySoftware || "",
     });
   }
 }, [leadData, reset]);
@@ -140,6 +140,18 @@ const onSubmit = async (formData) => {
               </select>
             </div>
 
+            {/* If Call Later - Optional */}
+            <div className="form-group">
+              <label>Contact Person</label>
+
+              <input
+                type="test"
+                defaultValue={leadData.contactPerson}
+                placeholder="Contact Person"
+                {...register("contactPerson")}
+              />
+            </div>
+
             {/* Location - Required */}
             <div className="form-group">
               <label>Location</label>
@@ -177,18 +189,6 @@ const onSubmit = async (formData) => {
               <small>{errors.status?.message}</small>
             </div>
 
-            {/* If Call Later - Optional */}
-            <div className="form-group">
-              <label>Contact Person</label>
-
-              <input
-                type="test"
-                defaultValue={leadData.contactPerson}
-                placeholder="Contact Person"
-                {...register("contactPerson")}
-              />
-            </div>
-
             {/* Any Software - Optional */}
             <div className="form-group">
               <label>Any Software</label>
@@ -217,7 +217,7 @@ const onSubmit = async (formData) => {
               <label>Remarks</label>
 
               <textarea
-              value={leadData.remarks}
+                defaultValue={leadData.remarks}
                 rows={4}
                 {...register("remarks", {
                   required: "Remarks Required",
