@@ -13,18 +13,57 @@ import hero9 from "../assets/images/hero5.jpg";
 
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
-const images = [hero1, hero2, hero3, hero4,hero5, hero6, hero7, hero8,hero9];
+const images = [
+  hero1,
+  hero2,
+  hero3,
+  hero4,
+  hero5,
+  hero6,
+  hero7,
+  hero8,
+  hero9
+];
 
 const Headersection = () => {
   const [current, setCurrent] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    let loadedImages = 0;
+
+    images.forEach((src) => {
+      const img = new Image();
+
+      img.onload = () => {
+        loadedImages++;
+
+        if (loadedImages === images.length) {
+          setLoading(false);
+        }
+      };
+
+      img.onerror = () => {
+        loadedImages++;
+
+        if (loadedImages === images.length) {
+          setLoading(false);
+        }
+      };
+
+      img.src = src;
+    });
+  }, []);
+
+  useEffect(() => {
+    if (loading) return;
+
     const slider = setInterval(() => {
       setCurrent((prev) => (prev + 1) % images.length);
     }, 5000);
 
     return () => clearInterval(slider);
-  }, []);
+  }, [loading]);
 
   const nextSlide = () => {
     setCurrent((prev) => (prev + 1) % images.length);
@@ -36,6 +75,32 @@ const Headersection = () => {
     );
   };
 
+  /* =========================
+     LOADING SCREEN
+  ========================= */
+
+  if (loading) {
+    return (
+      <div className="jj-loader">
+        <div className="loader-content">
+
+          <div className="jj-logo-loader">
+            JJ
+          </div>
+
+          <h2>JJEnterprises</h2>
+
+          <p>Loading your experience...</p>
+
+          <div className="loader-line">
+            <span></span>
+          </div>
+
+        </div>
+      </div>
+    );
+  }
+
   return (
     <section className="hero">
 
@@ -43,8 +108,12 @@ const Headersection = () => {
       {images.map((img, index) => (
         <div
           key={index}
-          className={`slide ${index === current ? "active" : ""}`}
-          style={{ backgroundImage: `url(${img})` }}
+          className={`slide ${
+            index === current ? "active" : ""
+          }`}
+          style={{
+            backgroundImage: `url(${img})`
+          }}
         />
       ))}
 
@@ -65,6 +134,7 @@ const Headersection = () => {
         </p>
 
         <div className="hero-buttons">
+
           <button className="btn-primary">
             Get Started
           </button>
@@ -72,17 +142,24 @@ const Headersection = () => {
           <button className="btn-secondary">
             Contact Us
           </button>
+
         </div>
 
       </div>
 
       {/* Left Arrow */}
-      <button className="arrow left" onClick={prevSlide}>
+      <button
+        className="arrow left"
+        onClick={prevSlide}
+      >
         <FaArrowLeft />
       </button>
 
       {/* Right Arrow */}
-      <button className="arrow right" onClick={nextSlide}>
+      <button
+        className="arrow right"
+        onClick={nextSlide}
+      >
         <FaArrowRight />
       </button>
 
@@ -92,7 +169,11 @@ const Headersection = () => {
         {images.map((_, index) => (
           <span
             key={index}
-            className={current === index ? "dot activvee-dot" : "dot"}
+            className={
+              current === index
+                ? "dot active-dot"
+                : "dot"
+            }
             onClick={() => setCurrent(index)}
           />
         ))}
@@ -104,5 +185,3 @@ const Headersection = () => {
 };
 
 export default Headersection;
-
-
