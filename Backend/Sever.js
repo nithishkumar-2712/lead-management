@@ -31,7 +31,6 @@ app.use(
   cors({
     origin: [
       process.env.Backend_url,
-      // "http://10.227.72.250:5173",
     ],
     credentials: true,
   })
@@ -40,7 +39,6 @@ const io = new Server(server, {
   cors: {
     origin: [
       process.env.Backend_url,
-      // "http://10.227.72.250:5173",
     ],
     credentials: true,
   },
@@ -49,10 +47,10 @@ const io = new Server(server, {
 global.io = io;
 
 io.on("connection", (socket) => {
-  console.log("✅ User Connected:", socket.id);
+  // console.log("✅ User Connected:", socket.id);
 
   socket.on("disconnect", () => {
-    console.log("❌ User Disconnected:", socket.id);
+    // console.log("❌ User Disconnected:", socket.id);
   });
 });
 app.use(User);

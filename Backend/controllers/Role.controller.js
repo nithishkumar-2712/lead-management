@@ -1,4 +1,4 @@
-const RoleModel = require("../models/role.model");
+const RoleModel = require("../models/Role.model");
 const UserModel = require("../models/user.model");
 
 // CREATE ROLE

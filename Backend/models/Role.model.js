@@ -20,7 +20,5 @@ const roleSchema = new mongoose.Schema(
 );
 
 // const RoleModel = mongoose.model("Master_Role", roleSchema);
-const RoleModel =
-  mongoose.models.Master_Role ||
-  mongoose.model("Master_Role", roleSchema);
+const RoleModel =mongoose.model("Master_Role", roleSchema);
 module.exports=RoleModel;
