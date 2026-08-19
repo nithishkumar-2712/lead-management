@@ -12,7 +12,7 @@ function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const{isLoggedIn,tokencheck}=useContext(AppContext);
-  // console.log(isLoggedIn)
+  console.log(isLoggedIn)
   const {
     register,
     handleSubmit,

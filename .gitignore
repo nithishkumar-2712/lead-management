@@ -6,6 +6,10 @@ node_modules/
 .env.*
 !.env.example
 
+# Frontend
+Forenend/node_modules/
+Forenend/.env
+Forenend/.env.local
 # Logs
 *.log
 npm-debug.log*
