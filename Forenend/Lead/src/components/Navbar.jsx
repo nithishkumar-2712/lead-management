@@ -113,7 +113,7 @@ useEffect(() => {
 
     socket.on("executiveNotification", (data) => {
 
-        console.log("Notification Received", data);
+        // console.log("Notification Received", data);
         setCount((prev) => prev + 1);
 
         Swal.fire({
@@ -163,7 +163,7 @@ useEffect(() => {
             <ul className={`nav-links ${menuOpen ? "active" : ""}`}>
                 {!isLoggedIn?(
                 <>
-                <li><Link to="/Home"onClick={closeMenu}>Home</Link></li>
+                <li><Link to="/"onClick={closeMenu}>Home</Link></li>
                 <li><Link to="/About"onClick={closeMenu}>About</Link></li>
                 <li><Link to="/Services"onClick={closeMenu}>Services</Link></li>
                 <li><Link to="/Contact"onClick={closeMenu}>Contact</Link></li>

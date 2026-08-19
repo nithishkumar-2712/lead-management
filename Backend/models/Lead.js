@@ -85,10 +85,10 @@ const leadSchema = new mongoose.Schema(
       ref: "Master_LeadStatus",
     },
 
-    nextDemoDate: {
-      type: Date,
-      default: null,
-    },
+    // nextDemoDate: {
+    //   type: Date,
+    //   default: null,
+    // },
 
     demoDate: {
       type: Date,
@@ -114,14 +114,14 @@ const leadSchema = new mongoose.Schema(
       default: "N/A",
     },
 
-    reasonReject: {
-      type: String,
-      default: "N/A",
-    },
-    demoRemarks: {
-      type: String,
-      default: "N/A",
-    },
+    // reasonReject: {
+    //   type: String,
+    //   default: "N/A",
+    // },
+    // demoRemarks: {
+    //   type: String,
+    //   default: "N/A",
+    // },
     
     priority: {
       type: String,

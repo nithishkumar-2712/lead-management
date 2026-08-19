@@ -41,10 +41,10 @@ const getLeadByCalledMobileNumber = async (req, res) => {
 };
 const createLead = async (req, res) => {  
   try {
-    const {mobile,district,contactPerson,isActive,remarks,software,city,leadSource,status,referenceDetails,reasonReject} = req.body;
+    const {mobile,district,contactPerson,isActive,remarks,software,city,leadSource,status,referenceDetails} = req.body;
     const UserId=req.body.userId; 
     // console.log(`status${software}`)
-    const lead = await LeadModel.create({mobile,contactPerson,isActive,remarks,district,city,software,leadSource,status,referenceDetails,reasonReject,assignedUser:UserId});
+    const lead = await LeadModel.create({mobile,contactPerson,isActive,remarks,district,city,software,leadSource,status,referenceDetails,assignedUser:UserId});
     // console.log(`status${lead}`)
     const demostatus= await LeadstatusModel.findById(lead.status)
     // console.log(`Demo Statusss ${demostatus}`)
@@ -240,7 +240,21 @@ const updateLeadREayleadupdate = async (req, res) => {
 };
 const getLeads = async (req, res) => {
   try {
-    const UserId=req.body.userId; 
+    const UserId=req.body.userId;
+    const now = new Date();
+
+    const lastMonthStart = new Date(
+      now.getFullYear(),
+      now.getMonth() - 1,
+      1
+    );
+
+    const nextMonthStart = new Date(
+      now.getFullYear(),
+      now.getMonth() + 1,
+      1
+    );
+
     const Admincheck = await UserModel.findById({_id:UserId}).populate("userType");
     // console.log(Admincheck.userType.roleName)
     const leads = Admincheck.userType.roleName === "Admin"
@@ -252,7 +266,13 @@ const getLeads = async (req, res) => {
       .populate("assignedExecutive")
       .populate("assignedUser")
       .populate("status")
-      : await LeadModel.find({isActive:true})
+      : await LeadModel.find({
+        isActive:true,
+        updatedAt: {
+          $gte: lastMonthStart,
+          $lt: nextMonthStart
+        }
+      })
       .populate("businessType")
       .populate("assignBranch")
       .populate("leadSource")
@@ -345,6 +365,19 @@ const LeadEdit = async (req, res) => {
 };
 const BranchheadLead= async (req, res) => {
     const UserId=req.body.userId;
+    const now = new Date();
+
+    const lastMonthStart = new Date(
+      now.getFullYear(),
+      now.getMonth() - 1,
+      1
+    );
+
+    const nextMonthStart = new Date(
+      now.getFullYear(),
+      now.getMonth() + 1,
+      1
+    );
     try {
 
         const user = await UserModel.findById({_id:UserId}).populate("userType");
@@ -352,7 +385,14 @@ const BranchheadLead= async (req, res) => {
           return res.json({message:"User in not fount "})
         }
         const leads = await LeadModel.find({
-         assignBranchHead: user._id
+
+         assignBranchHead: user._id,
+         isActive:true,
+        updatedAt: {
+          $gte: lastMonthStart,
+          $lt: nextMonthStart
+        }
+
         }) .populate("businessType").populate("assignBranch").populate("leadSource").populate("status").populate("assignedUser").populate("assignedExecutive").populate("assignBranchHead");
         res.json({
             success: true,
@@ -371,6 +411,19 @@ const BranchheadLead= async (req, res) => {
 };
 const ExcutiveLead= async (req, res) => {
   const UserId=req.body.userId;
+  const now = new Date();
+
+    const lastMonthStart = new Date(
+      now.getFullYear(),
+      now.getMonth() - 1,
+      1
+    );
+
+    const nextMonthStart = new Date(
+      now.getFullYear(),
+      now.getMonth() + 1,
+      1
+    );
   try {
 
     const user = await UserModel.findById({_id:UserId}).populate("userType");
@@ -378,7 +431,12 @@ const ExcutiveLead= async (req, res) => {
       return res.json({message:"User in not fount "})
     }
     const leads = await LeadModel.find({
-     assignedExecutive: user._id
+     assignedExecutive: user._id,
+     isActive:true,
+      updatedAt: {
+      $gte: lastMonthStart,
+      $lt: nextMonthStart
+    }
     }) .populate("businessType").populate("assignBranch").populate("leadSource").populate("status").populate("assignedUser").populate("assignedExecutive").populate("assignBranchHead");
     res.json({
         success: true,
@@ -483,8 +541,8 @@ const updateLeadstatus = async (req, res) => {
       status,
       remarks,
       software,
-      nextDemoDate,
-      demoRemarks,
+      // nextDemoDate,
+      // demoRemarks,
       rescheduledDate,
       license,
       softwareName,
@@ -500,9 +558,9 @@ const updateLeadstatus = async (req, res) => {
         remarks,
         Software: software,
         // ifCallLater: rescheduledDate,
-        demoRemarks:demoRemarks,
+        // demoRemarks:demoRemarks,
         rescheduledDate:rescheduledDate,
-        nextDemoDate:nextDemoDate
+        // nextDemoDate:nextDemoDate
       },
       {
         returnDocument: "after",

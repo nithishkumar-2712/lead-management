@@ -5,7 +5,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import reactLogo from './assets/react.svg'
+import reactLogo from './assets/Logo.jpg'
 import CRM from './Page/CRM'
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
