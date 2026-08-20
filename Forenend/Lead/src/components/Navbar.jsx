@@ -22,6 +22,7 @@ import socket from "../Config/socket";
     // const [Token, settoken] = useState(true);
     const [profileOpen, setProfileOpen] = useState(false);
      const [showMaster, setShowMaster] = useState(false);
+     const [profileLoading, setProfileLoading] = useState(false);
 const LogOut = async () => {
   const result = await Swal.fire({
     title: "Are you sure?",
@@ -71,41 +72,49 @@ const LogOut = async () => {
     });
   }
 };
-    const Prfofil = async () => {
-    try {
-        const { data } = await axios.post("/api/Prfofil");
+const handleNavigation = (path) => {
+  closeMenu();
+  navigate(path);
+};
+const Prfofil = async () => {
+  try {
+    setProfileLoading(true);
 
-        if (data.success) {
-        setProfileOpen(false);
+    const { data } = await axios.post("/api/Prfofil");
 
-        const profile = data.data;
+    if (data.success) {
+      setProfileOpen(false);
 
-        navigate(`/Profile/${profile._id}`, {
-            state: { Profileid: profile },
-        });
+      const profile = data.data;
 
-        Swal.fire({
-            icon: "success",
-            title: "Success",
-            text: data.message,
-            timer: 1500,
-            showConfirmButton: false,
-        });
-        } else {
-        Swal.fire({
-            icon: "error",
-            title: "Error",
-            text: data.message,
-        });
-        }
-    } catch (error) {
-        Swal.fire({
+      navigate(`/Profile/${profile._id}`, {
+        state: { Profileid: profile },
+      });
+
+      Swal.fire({
+        icon: "success",
+        title: "Success",
+        text: data.message,
+        timer: 1500,
+        showConfirmButton: false,
+      });
+    } else {
+      Swal.fire({
         icon: "error",
         title: "Error",
-        text: error.response?.data?.message || "Something went wrong",
-        });
+        text: data.message,
+      });
     }
-    };
+  } catch (error) {
+    Swal.fire({
+      icon: "error",
+      title: "Error",
+      text: error.response?.data?.message || "Something went wrong",
+    });
+  } finally {
+    setProfileLoading(false);
+  }
+};
     const closeMenu = () => {
     setMenuOpen(false);
     };
@@ -163,10 +172,10 @@ useEffect(() => {
             <ul className={`nav-links ${menuOpen ? "active" : ""}`}>
                 {!isLoggedIn?(
                 <>
-                <li><Link to="/"onClick={closeMenu}>Home</Link></li>
-                <li><Link to="/About"onClick={closeMenu}>About</Link></li>
-                <li><Link to="/Services"onClick={closeMenu}>Services</Link></li>
-                <li><Link to="/Contact"onClick={closeMenu}>Contact</Link></li>
+                <li  onClick={() => handleNavigation("/")}><Link to="/"onClick={closeMenu}>Home</Link></li>
+                <li  onClick={() => handleNavigation("/About")}><Link to="/About"onClick={closeMenu}>About</Link></li>
+                <li  onClick={() => handleNavigation("/Services")}><Link to="/Services"onClick={closeMenu}>Services</Link></li>
+                <li  onClick={() => handleNavigation("/Contact")}><Link to="/Contact"onClick={closeMenu}>Contact</Link></li>
                 
                 </>):(<>
                 
@@ -174,26 +183,26 @@ useEffect(() => {
                 {Role === "Lead" && (
                     <>
                     {/* <li><Link to="/"onClick={closeMenu}>Home</Link></li> */}
-                    <li><Link to="/Lead"onClick={closeMenu}>Dashboard</Link></li>
-                    <li><Link to="/LeadEdit"onClick={closeMenu}>LeadEdit</Link></li>
+                    <li onClick={() => handleNavigation("/Lead")}><Link to="/Lead"onClick={closeMenu}>Dashboard</Link></li>
+                    <li onClick={() => handleNavigation("/LeadEdit")}><Link to="/LeadEdit"onClick={closeMenu}>LeadEdit</Link></li>
                     </>
                 )}
 
                 {/* Head */}
                 {Role === "Branch Head" && (
                     <>
-                    <li><Link to="/BranchHead" onClick={closeMenu}>BranchHead</Link></li>
-                    <li><Link to="/OwnLeads" onClick={closeMenu}>OwnLeads</Link></li>
-                    <li><Link to="/Executives"onClick={closeMenu}>Executives</Link></li>
+                    <li onClick={() => handleNavigation("/BranchHead")}><Link to="/BranchHead" onClick={closeMenu}>BranchHead</Link></li>
+                    <li onClick={() => handleNavigation("/OwnLeads")}><Link to="/OwnLeads" onClick={closeMenu}>OwnLeads</Link></li>
+                    <li onClick={() => handleNavigation("/Executives")}><Link to="/Executives"onClick={closeMenu}>Executives</Link></li>
                     </>
                 )}
 
                 {/* Executive */}
                 {Role === "Executives" && (
                     <>
-                    <li><Link to="/ExcutiveHomepage"onClick={closeMenu}>Lead Executive</Link></li>
-                    <li><Link to="/OwnLeads" onClick={closeMenu}>OwnLeads</Link></li>
-                    <li><Link to="/Executives"onClick={closeMenu}>Executives</Link></li>
+                    <li onClick={() => handleNavigation("/ExcutiveHomepage")}><Link to="/ExcutiveHomepage"onClick={closeMenu}>Lead Executive</Link></li>
+                    <li onClick={() => handleNavigation("/OwnLeads")}><Link to="/OwnLeads" onClick={closeMenu}>OwnLeads</Link></li>
+                    <li onClick={() => handleNavigation("/Executives")}><Link to="/Executives"onClick={closeMenu}>Executives</Link></li>
                     </>
                 )}
                 {/* Admin */}
@@ -203,14 +212,14 @@ useEffect(() => {
                             {/* <li>
                                 <Link to="/"onClick={closeMenu}>Home</Link>
                             </li> */}
-                            <li>
+                            <li onClick={() => handleNavigation("/AdminPage")}>
                                 <Link to="/AdminPage"onClick={closeMenu}>Dashboard</Link>
                             </li>
 
-                            <li>
+                            <li onClick={() => handleNavigation("/AdminInsulationpage")}>
                                 <Link to="/AdminInsulationpage"onClick={closeMenu}>Insulation</Link>
                             </li>
-                            <li>
+                            <li onClick={() => handleNavigation("/LeadManagement")}>
                                 <Link to="/LeadManagement"onClick={closeMenu}>Lead</Link>
                             </li>
                             <li
@@ -224,12 +233,12 @@ useEffect(() => {
 
                                 {showMaster && (
                                 <ul className="dropdown-menu">
-                                    <li><Link to="/UsersManagement"onClick={closeMenu}>User</Link></li>
-                                    <li><Link to="/BusinessType"onClick={closeMenu}>Business</Link></li>
-                                    <li><Link to="/Leadsourse"onClick={closeMenu}>Lead Source</Link></li>
-                                    <li><Link to="/UserRole"onClick={closeMenu}>Role</Link></li>
-                                    <li><Link to="/BranchCreat"onClick={closeMenu}>Branch</Link></li>
-                                    <li><Link to="/Creatstatus"onClick={closeMenu}>Status</Link></li>
+                                    <li onClick={() => handleNavigation("/UsersManagement")}><Link to="/UsersManagement"onClick={closeMenu}>User</Link></li>
+                                    <li onClick={() => handleNavigation("/BusinessType")}><Link to="/BusinessType"onClick={closeMenu}>Business</Link></li>
+                                    <li onClick={() => handleNavigation("/Leadsourse")}><Link to="/Leadsourse"onClick={closeMenu}>Lead Source</Link></li>
+                                    <li onClick={() => handleNavigation("/UserRole")}><Link to="/UserRole"onClick={closeMenu}>Role</Link></li>
+                                    <li onClick={() => handleNavigation("/BranchCreat")}><Link to="/BranchCreat"onClick={closeMenu}>Branch</Link></li>
+                                    <li onClick={() => handleNavigation("/Creatstatus")}><Link to="/Creatstatus"onClick={closeMenu}>Status</Link></li>
                                     {/* <li><Link to="/LeadManagement"onClick={closeMenu}>Lead</Link></li> */}
                                     {/* <li><Link to="/Excutivecell"onClick={closeMenu}>Cells</Link></li> */}
                                 </ul>
@@ -300,10 +309,15 @@ useEffect(() => {
                  {isLoggedIn ?(
                     <>
                     <button
-                        className="view-btn"
-                        onClick={Prfofil}
+                    className="view-btn"
+                    onClick={Prfofil}
+                    disabled={profileLoading}
                     >
-                        View Profile
+                    {profileLoading ? (
+                        <span className="profile-spinner"></span>
+                    ) : (
+                        "View Profile"
+                    )}
                     </button>
 
                     <button

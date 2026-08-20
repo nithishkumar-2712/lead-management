@@ -407,30 +407,44 @@ const {
         <div className={`lead-section ${showTable ? "show-table" : "hide-table"}`}>
           <div className="right-box">
               <h2>Check Mobile Number</h2>
-            <form className="form" onSubmit={handleSubmit(onSubmit)}>
-              
-              <input
-                type="Text"
-                placeholder="Enter mobile number"
-                {...register("mobile", { required: "mobile is required" })}
-              />
-              {/* {errors.mobile && <p style={{ color: "red" }}>{errors.mobile.message}</p>} */}
-              <button
-                type="submit"
-                disabled={isChecking}
-                className="check-btn"
-              >
-                {isChecking ? (
-                  <>
-                    <span className="check-spinner"></span>
-                    Checking...
-                  </>
-                ) : (
-                  "Check"
-                )}
-              </button>
+              <form className="form" onSubmit={handleSubmit(onSubmit)}>
 
-            </form>
+                <input
+                  type="text"
+                  inputMode="numeric"
+                  maxLength={10}
+                  placeholder="Enter mobile number"
+                  {...register("mobile", {
+                    required: "Mobile number is required",
+                    pattern: {
+                      value: /^[0-9]{10}$/,
+                      message: "Mobile number must be exactly 10 digits",
+                    },
+                  })}
+                />
+
+                {errors.mobile && (
+                  <p style={{ color: "red" }}>
+                    {errors.mobile.message}
+                  </p>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={isChecking}
+                  className="check-btn"
+                >
+                  {isChecking ? (
+                    <>
+                      <span className="check-spinner"></span>
+                      Checking...
+                    </>
+                  ) : (
+                    "Check"
+                  )}
+                </button>
+
+              </form>
               {/* <p className="hint">
                 Enter a valid 10-digit number
               </p> */}

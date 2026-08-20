@@ -10,7 +10,7 @@ import hero6 from "../assets/images/hms2.jpg";
 import hero7 from "../assets/images/hms.jpg";
 import hero8 from "../assets/images/hero4.jpg";
 import hero9 from "../assets/images/hero5.jpg";
-
+import {useNavigate}from"react-router-dom"
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const images = [
@@ -28,7 +28,7 @@ const images = [
 const Headersection = () => {
   const [current, setCurrent] = useState(0);
   const [loading, setLoading] = useState(true);
-
+    const navigate = useNavigate();
   useEffect(() => {
     let loadedImages = 0;
 
@@ -102,7 +102,7 @@ const Headersection = () => {
   }
 
   return (
-    <section className="hero">
+    <section className="heroo">
 
       {/* Background Images */}
       {images.map((img, index) => (
@@ -135,13 +135,20 @@ const Headersection = () => {
 
         <div className="hero-buttons">
 
-          <button className="btn-primary">
+          <button 
+          className="btn-primary"
+          onClick={() => navigate("/contact")}
+
+          >
             Get Started
           </button>
 
-          <button className="btn-secondary">
-            Contact Us
-          </button>
+        <button
+          className="btn-secondary"
+          onClick={() => navigate("/Contact")}
+        >
+          Contact Us
+        </button>
 
         </div>
 
