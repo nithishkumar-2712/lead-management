@@ -37,13 +37,14 @@ import Swal from "sweetalert2";
       Loading: LeadbusinesstypeLoading,
     } = Customhook("/api/businesstypegett");
 
-    const selectedStatus = watch("status");
-    selectedStatus === "Success"
-    const selectedStatusName = Leadstatus?.find(
-        (item) => item._id === selectedStatus
-    )?.name;
+const selectedStatus = watch("status");
 
-    const SuccessStatus = selectedStatusName === "Success";
+const selectedStatusName = Leadstatus?.find(
+  (item) => item._id === selectedStatus
+)?.name;
+
+const SuccessStatus = selectedStatusName === "Success";
+const DemoProgressStatus = selectedStatusName === "DemoProgress";
 
 const onSubmit = async (formData) => {
   try {
@@ -58,11 +59,14 @@ const onSubmit = async (formData) => {
         icon: "success",
         title: "Success!",
         text: data.message || "Lead Created Successfully",
-        timer: 1500,
+        timer: 2000,
         showConfirmButton: false,
       });
-
-      navigate("/");
+      if(data.Role==="Branch Head"){
+        navigate("/BranchHead");
+      }else{
+        navigate("/ExcutiveHomepage");
+      }
     } else {
       Swal.fire({
         icon: "warning",
@@ -404,6 +408,90 @@ const onSubmit = async (formData) => {
                   </div>
 
                 </div>
+              </>
+            )}
+                        {DemoProgressStatus && (
+              <>
+                    <div className="demo-progress-details-box">
+
+                        <div className="demo-progress-details-title">
+                        <span>📅</span>
+
+                        <div>
+                            <h3>Demo Progress Details</h3>
+                            <p>Please enter the demo follow-up information</p>
+                        </div>
+                        </div>
+
+                        <div className="demo-progress-details-grid">
+
+                        {/* Demo Date */}
+                        <div className="form-groupp demo-progress-field">
+                            <label>
+                            Demo Progress Date <span>*</span>
+                            </label>
+
+                            <input
+                            type="date"
+                            {...register("demoProgressDate", {
+                                required: DemoProgressStatus
+                                ? "Demo Date is required"
+                                : false,
+                            })}
+                            
+                            />
+
+                            <small className="error">
+                            {errors.Progress?.message}
+                            </small>
+                        </div>
+
+                        {/* Software Name */}
+                        <div className="form-groupp demo-progress-field">
+                            <label>
+                                Software Name <span>*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                placeholder="Enter Software Name"
+                                {...register("softwareName", {
+                                    required: DemoProgressStatus
+                                        ? "Software Name is required"
+                                        : false,
+                                })}
+                            />
+
+                            <small className="error">
+                                {errors.softwareName?.message}
+                            </small>
+                        </div>
+
+                        {/* Address */}
+                        <div className="form-groupp demo-progress-field">
+                            <label>
+                            Address <span>*</span>
+                            </label>
+
+                            <textarea
+                            placeholder="Enter Address"
+                            {...register("address", {
+                                required: DemoProgressStatus
+                                ? "Address is required"
+                                : false,
+                            })}
+                            
+                            />
+
+                            <small className="error">
+                            {errors.address?.message}
+                            </small>
+                        </div>
+
+                        </div>
+                    </div>
+                    <div>
+                    </div>
               </>
             )}
             <div className="lead-form-actions">

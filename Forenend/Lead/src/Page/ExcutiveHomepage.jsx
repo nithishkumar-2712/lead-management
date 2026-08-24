@@ -8,7 +8,8 @@ import {
   FaCalendarCheck,
   FaPhoneAlt,
   FaCheckCircle,
-  FaTimesCircle
+  FaTimesCircle,
+  FaTasks 
 } from "react-icons/fa";
 
 function ExcutiveHomepage() {
@@ -197,6 +198,10 @@ function ExcutiveHomepage() {
             acc.rescheduled++;
             break;
 
+          case "DemoProgress":
+            acc.DemoProgress++;
+            break;  
+
           case "Success":
             acc.success++;
             break;
@@ -221,6 +226,7 @@ function ExcutiveHomepage() {
         yes: 0,
         callAgain: 0,
         rescheduled: 0,
+        DemoProgress: 0,
         success: 0,
         pending: 0,
         rejected: 0,
@@ -530,7 +536,7 @@ function ExcutiveHomepage() {
                 <th>Demo Assigned</th>
                 <th>Yes</th>
                 <th>Call Again</th>
-                <th>Rescheduled</th>
+                <th>Demo Progress</th>
               </tr>
 
             </thead>
@@ -587,10 +593,10 @@ function ExcutiveHomepage() {
                   <button
                     className="status-btn branch"
                     onClick={() =>
-                      handleStatusClick("Rescheduled")
+                      handleStatusClick("DemoProgress")
                     }
                   >
-                    {statusCount.rescheduled}
+                    {statusCount.DemoProgress}
                   </button>
 
                 </td>
@@ -616,7 +622,7 @@ function ExcutiveHomepage() {
 
               <tr>
                 <th>Success</th>
-                <th>Busy / Call Later</th>
+                <th>Follow-up</th>
                 <th>Rejected</th>
               </tr>
 
@@ -705,6 +711,14 @@ function ExcutiveHomepage() {
 
             </div>
 
+            <div
+              className="mobile-status-card demo-progress "
+              onClick={() => handleStatusClick("DemoProgress")}
+            >
+              <FaTasks className="status-icon" />
+              <h4>Demo Progress</h4>
+              <h2>{statusCount.DemoProgress}</h2>
+            </div>
 
             <div
               className="mobile-status-card call"
@@ -717,12 +731,26 @@ function ExcutiveHomepage() {
 
               <FaPhoneAlt className="status-icon" />
 
-              <h4>Busy/CallLate</h4>
+              <h4>Follow-up</h4>
 
               <h2>{statusCount.busy}</h2>
 
             </div>
 
+            <div
+              className="mobile-status-card pending"
+              onClick={() =>
+                handleStatusClick("Rejected")
+              }
+            >
+
+              <FaTimesCircle className="status-icon" />
+
+              <h4>Rejected</h4>
+
+              <h2>{statusCount.rejected}</h2>
+
+            </div>
 
             <div
               className="mobile-status-card success"
@@ -740,20 +768,6 @@ function ExcutiveHomepage() {
             </div>
 
 
-            <div
-              className="mobile-status-card pending"
-              onClick={() =>
-                handleStatusClick("Rejected")
-              }
-            >
-
-              <FaTimesCircle className="status-icon" />
-
-              <h4>Rejected</h4>
-
-              <h2>{statusCount.rejected}</h2>
-
-            </div>
 
           </div>
 

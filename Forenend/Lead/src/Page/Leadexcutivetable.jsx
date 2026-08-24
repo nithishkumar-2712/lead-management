@@ -44,6 +44,7 @@ const {
   const [openModal, setOpenModal] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
   const [editLead, setEditLead] = useState(null);
+//   console.log(editLead)
   const [showAssignModal, setShowAssignModal] = useState(false);
 //   const [executives, setExecutives] = useState([]);
 const [expandedRow, setExpandedRow] = useState(null);
@@ -73,7 +74,7 @@ const handleAssignEdit = (lead) => {
 };
 
 const handleUpdateLead = async (formData) => {
-//   console.log(formData);
+  console.log(formData);
 
   try {
      setIsUpdating(true);
@@ -110,7 +111,7 @@ const handleUpdateLead = async (formData) => {
     }
 
   } catch (error) {
-    // console.log(error);
+    console.log(error);
 
     Swal.fire({
       icon: "error",
@@ -134,6 +135,7 @@ const statusName =
 Leadstatus?.find((item) => item._id === selectedStatus)?.name || "";
 
 const SuccessStatus = statusName === "Success";
+const DemoProgressStatus = statusName === "DemoProgress";
 
 // const isRescheduled = statusName === "Rescheduled";
 
@@ -155,19 +157,22 @@ const SuccessStatus = statusName === "Success";
                     <th>#</th>
                     <th>Veiw</th>
                     <th>Action</th>
-                    <th>Business</th>
                     <th>C:Name</th>
+                    <th>Person</th>
                     <th>Ph:no</th>
+                    <th>Business</th>
+                    <th>District</th>
                     <th>City</th>
-                    <th>Tele Call</th>
                     <th>status</th>
-                    <th>Lead Id</th>
+                    <th>Tele Call</th>
+                    {/* <th>Lead Id</th> */}
                     </tr>
                 </thead>
 
                 <tbody>
 
                 {data.map((item,index)=>(
+                    // console.log(item)
 
                 <React.Fragment key={item._id}>
 
@@ -210,13 +215,15 @@ const SuccessStatus = statusName === "Success";
                         </div>
                     </td>
 
-                    <td>{item.businessType?.name}</td>
                     <td>{item.companyName}</td>
+                    <td>{item.contactPerson}</td>
                     <td>{item.mobile}</td>
+                    <td>{item.businessType?.name}</td>
                     <td>{item.district}</td>
-                    <td>{item.assignedUser?.username}</td>
+                    <td>{item.city}</td>
                     <td>{item.status.name}</td>
-                    <td>{item._id}</td>
+                    <td>{item.assignedUser?.username}</td>
+                    {/* <td>{item._id}</td> */}
 
                 </tr>
 
@@ -225,9 +232,32 @@ const SuccessStatus = statusName === "Success";
                     <td colSpan="10">
                     <div className="lead-details">
 
-                        {hasValue(item._id) && (
+                        {hasValue(item.companyName) && (
                         <p>
-                            <b>Lead Id :</b> {item._id}
+                            <b>Company Name :</b> {item.companyName}
+                        </p>
+                        )}
+                        {hasValue(item.contactPerson) && (
+                        <p>
+                            <b>Person :</b> {item.contactPerson}
+                        </p>
+                        )}
+
+                        {hasValue(item.businessType?.name) && (
+                        <p>
+                            <b>Business :</b> {item.businessType.name}
+                        </p>
+                        )}
+
+                        {hasValue(item.district) && (
+                        <p>
+                            <b>District :</b> {item.district}
+                        </p>
+                        )}
+
+                        {hasValue(item.city) && (
+                        <p>
+                            <b>City :</b> {item.city}
                         </p>
                         )}
 
@@ -237,27 +267,25 @@ const SuccessStatus = statusName === "Success";
                         </p>
                         )}
 
-                        {hasValue(item.assignedUser?.username) && (
+                        {hasValue(item.demoProgressDate) && (
                         <p>
-                            <b>Tele Caller :</b> {item.assignedUser.username}
+                            <b>Demo Progress Date :</b> {item.demoProgressDate}
                         </p>
                         )}
-
-                        {hasValue(item.preferredLanguage) && (
+                        {hasValue(item.softwareName) && (
                         <p>
-                            <b>Language :</b> {item.preferredLanguage}
+                            <b>software Name :</b> {item.softwareName}
                         </p>
                         )}
-
                         {hasValue(item.priority) && (
                         <p>
                             <b>Priority :</b> {item.priority}
                         </p>
                         )}
 
-                        {hasValue(item.remarks) && (
+                        {hasValue(item.assignedUser?.username) && (
                         <p>
-                            <b>Remarks :</b> {item.remarks}
+                            <b>Tele Caller :</b> {item.assignedUser.username}
                         </p>
                         )}
 
@@ -279,15 +307,26 @@ const SuccessStatus = statusName === "Success";
                         </p>
                         )}
 
-                        {hasValue(item.businessType?.name) && (
+                        {hasValue(item.remarks) && (
                         <p>
-                            <b>Business :</b> {item.businessType.name}
+                            <b>Remarks :</b> {item.remarks}
                         </p>
                         )}
 
                         {hasValue(item.demoDate) && (
                         <p>
                             <b>Demo Date :</b> {item.demoDate.substring(0, 10)}
+                        </p>
+                        )}
+                        {hasValue(item.address) && (
+                        <p>
+                            <b>Address :</b> {item.address}
+                        </p>
+                        )}
+
+                        {hasValue(item._id) && (
+                        <p>
+                            <b>Lead Id :</b> {item._id}
                         </p>
                         )}
 
@@ -310,7 +349,7 @@ const SuccessStatus = statusName === "Success";
             <div className="modal-overrlay">
                 <div className="modall-boox">
                     <h2>Update Lead Details</h2>
-                    <form className="formstatusupddate" onSubmit={handleSubmit(handleUpdateLead)}>
+                    <form className="" onSubmit={handleSubmit(handleUpdateLead)}>
                     <div className="form-groupp">
                         <label>Lead Id</label>
                         <input
@@ -357,6 +396,90 @@ const SuccessStatus = statusName === "Success";
                             })}
                         />
                     </div>
+                    {DemoProgressStatus && (
+                        <>
+                    <div className="demo-progress-details-box">
+
+                        <div className="demo-progress-details-title">
+                        <span>📅</span>
+
+                        <div>
+                            <h3>Demo Progress Details</h3>
+                            <p>Please enter the demo follow-up information</p>
+                        </div>
+                        </div>
+
+                        <div className="demo-progress-details-grid">
+
+                        {/* Demo Date */}
+                        <div className="form-groupp demo-progress-field">
+                            <label>
+                            Demo Progress Date <span>*</span>
+                            </label>
+
+                            <input
+                            type="date"
+                            {...register("demoProgressDate", {
+                                required: DemoProgressStatus
+                                ? "Demo Date is required"
+                                : false,
+                            })}
+                            
+                            />
+
+                            <small className="error">
+                            {errors.Progress?.message}
+                            </small>
+                        </div>
+                        {/* Software Name */}
+                        <div className="form-groupp demo-progress-field">
+                            <label>
+                                Software Name <span>*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                placeholder="Enter Software Name"
+                                {...register("softwareName", {
+                                    required: DemoProgressStatus
+                                        ? "Software Name is required"
+                                        : false,
+                                })}
+                            />
+
+                            <small className="error">
+                                {errors.softwareName?.message}
+                            </small>
+                        </div>
+
+                        {/* Address */}
+                        <div className="form-groupp demo-progress-field">
+                            <label>
+                            Address <span>*</span>
+                            </label>
+
+                            <textarea
+                            placeholder="Enter Address"
+                            {...register("address", {
+                                required: DemoProgressStatus
+                                ? "Address is required"
+                                : false,
+                            })}
+                            
+                            />
+
+                            <small className="error">
+                            {errors.address?.message}
+                            </small>
+                        </div>
+
+                        </div>
+                    </div>
+                    <div>
+
+                    </div>
+                    </>
+                    )}
 
                     {SuccessStatus && (
                     <div className="success-details-box">
@@ -407,6 +530,12 @@ const SuccessStatus = statusName === "Success";
                                 : false,
                             })}
                             placeholder="Enter Software Name"
+                            defaultValue={
+                                editLead?.softwareName &&
+                                editLead.softwareName !== "N/A"
+                                    ? editLead.softwareName
+                                    : ""
+                                }
                             />
 
                             <small className="error">
@@ -415,33 +544,48 @@ const SuccessStatus = statusName === "Success";
                         </div>
 
 
-                        {/* Installation Date */}
-                        <div className="form-groupp success-field">
+                            {/* Installation Date */}
+                            <div className="form-groupp success-field">
                             <label>
-                            Installation Date <span>*</span>
+                                Installation Date <span>*</span>
                             </label>
 
                             <input
-                            type="date"
-                            {...register("installationDate", {
+                                type="date"
+                                {...register("installationDate", {
                                 required: SuccessStatus
-                                ? "Installation Date is required"
-                                : false,
-                            })}
+                                    ? "Installation Date is required"
+                                    : false,
+                                })}
+                                defaultValue={
+                                editLead?.demoProgressDate &&
+                                editLead?.demoProgressDate !== "N/A"
+                                    ? editLead.demoProgressDate.substring(0, 10)
+                                    : ""
+                                }
                             />
 
                             <small className="error">
-                            {errors.installationDate?.message}
+                                {errors.installationDate?.message}
                             </small>
-                        </div>
-                       {/* Address */}
-                        <div className="form-group">
+                            </div>
+
+
+                            {/* Address */}
+                            <div className="form-group">
                             <label>Address</label>
+
                             <textarea
-                            placeholder="Enter Address"
-                            {...register("address")}
+                                placeholder="Enter Address"
+                                {...register("address")}
+                                defaultValue={
+                                editLead?.address &&
+                                editLead.address !== "N/A"
+                                    ? editLead.address
+                                    : ""
+                                }
                             />
-                        </div>
+                            </div>
 
                         </div>
                     </div>

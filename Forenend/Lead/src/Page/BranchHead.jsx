@@ -12,6 +12,7 @@ import {
   FaCheckCircle,
   FaTimesCircle,
   FaUserTie,
+  FaTasks 
 } from "react-icons/fa";
 
 function BranchHead() {
@@ -163,7 +164,11 @@ function BranchHead() {
             acc.success++;
             break;
 
-          case "Pending":
+          case "DemoProgress":
+            acc.DemoProgress++;
+            break;
+
+         case "Pending":
             acc.pending++;
             break;
 
@@ -192,9 +197,10 @@ function BranchHead() {
         callAgain: 0,
         rescheduled: 0,
         success: 0,
-        pending: 0,
+        DemoProgress: 0,
         moreDemo: 0,
         rejected: 0,
+        pending: 0,
         busy: 0,
       }
     );
@@ -509,8 +515,8 @@ function BranchHead() {
             <thead>
               <tr>
                 <th>Rejected</th>
-                <th>Call Again</th>
-                <th>Rescheduled</th>
+                <th>Follow-up</th>
+                <th>Demo Progress</th>
               </tr>
             </thead>
 
@@ -546,11 +552,11 @@ function BranchHead() {
                     className="status-btn branch"
                     onClick={() =>
                       handleStatusClick(
-                        "Rescheduled"
+                        "DemoProgress"
                       )
                     }
                   >
-                    {statusCount.rescheduled}
+                    {statusCount.DemoProgress}
                   </button>
                 </td>
 
@@ -642,7 +648,7 @@ function BranchHead() {
             </div>
 
             <div
-              className="mobile-status-card demo"
+              className="mobile-status-card executive-assigned"
               onClick={() =>
                 handleStatusClick("Executive")
               }
@@ -653,6 +659,27 @@ function BranchHead() {
             </div>
 
             <div
+              className="mobile-status-card demo-progress "
+              onClick={() => handleStatusClick("DemoProgress")}
+            >
+              <FaTasks className="status-icon" />
+              <h4>Demo Progress</h4>
+              <h2>{statusCount.DemoProgress}</h2>
+            </div>
+
+            <div
+              className="mobile-status-card pending"
+              onClick={() =>
+                handleStatusClick("Rejected")
+              }
+            >
+              <FaTimesCircle className="status-icon" />
+              <h4>Rejected</h4>
+              <h2>{statusCount.rejected}</h2>
+            </div>
+
+
+            <div
               className="mobile-status-card call"
               onClick={() =>
                 handleStatusClick(
@@ -661,7 +688,7 @@ function BranchHead() {
               }
             >
               <FaPhoneAlt className="status-icon" />
-              <h4>Busy/CallLate</h4>
+              <h4>Follow-up</h4>
               <h2>{statusCount.busy}</h2>
             </div>
 
@@ -674,17 +701,6 @@ function BranchHead() {
               <FaCheckCircle className="status-icon" />
               <h4>Success</h4>
               <h2>{statusCount.success}</h2>
-            </div>
-
-            <div
-              className="mobile-status-card pending"
-              onClick={() =>
-                handleStatusClick("Rejected")
-              }
-            >
-              <FaTimesCircle className="status-icon" />
-              <h4>Rejected</h4>
-              <h2>{statusCount.rejected}</h2>
             </div>
 
           </div>

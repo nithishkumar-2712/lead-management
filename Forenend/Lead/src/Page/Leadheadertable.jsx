@@ -180,6 +180,7 @@ const statusName =
 Leadstatus?.find((item) => item._id === selectedStatus)?.name || "";
 
 const SuccessStatus = statusName === "Success";
+const DemoProgressStatus = statusName === "DemoProgress";
 
   return (
     <>
@@ -194,10 +195,10 @@ const SuccessStatus = statusName === "Success";
                     <th>Veiw</th>
                     <th>Action</th>
                     <th>C-Name</th>
+                    <th>C-Person</th>
                     <th>Ph:no</th>
                     <th>Business</th>
                     <th>District</th>
-                    <th>C-Person</th>
                     <th>status</th>
                     <th>Creat_date</th>
                     <th>Ass-User</th>
@@ -257,10 +258,10 @@ const SuccessStatus = statusName === "Success";
                             </td>
 
                             <td>{item.companyName}</td>
+                            <td>{item.contactPerson}</td>
                             <td>{item.mobile}</td>
                             <td>{item.businessType?.name}</td>
                             <td>{item.district}</td>
-                            <td>{item.contactPerson}</td>
                             <td>{item.status?.name}</td>
                             <td>{item.createdAt?.substring(0, 10)}</td>
                             <td>{item.assignedUser.username}</td>
@@ -270,32 +271,50 @@ const SuccessStatus = statusName === "Success";
                                 <td colSpan="11">
                                 <div className="lead-details">
 
-                                    {item._id && (
-                                    <p>
-                                        <b>Lead Id :</b> {item._id}
-                                    </p>
-                                    )}
-
-                                    {item.createdAt && (
-                                    <p>
-                                        <b>Creat Date:</b> {item.createdAt.substring(0,10)}
-                                    </p>
-                                    )}
-
                                     {item.companyName && (
                                     <p>
                                         <b>Company Name :</b> {item.companyName}
                                     </p>
                                     )}
+
+                                    {item.contactPerson && (
+                                    <p>
+                                        <b>Person Name :</b> {item.contactPerson}
+                                    </p>
+                                    )}
+
                                     {item.contactNo && (
                                     <p>
                                         <b>ContactNo :</b> {item.contactNo}
                                     </p>
                                     )}
 
+                                    {item.businessType?.name && (
+                                    <p>
+                                        <b>Business :</b> {item.businessType.name}
+                                    </p>
+                                    )}
+
+                                    {item.city && (
+                                    <p>
+                                        <b>City :</b> {item.city}
+                                    </p>
+                                    )}
+                                    {item.district && (
+                                    <p>
+                                        <b>District :</b> {item.district}
+                                    </p>
+                                    )}
+
+
                                     {item.leadSource?.name && (
                                     <p>
                                         <b>Lead Source :</b> {item.leadSource.name}
+                                    </p>
+                                    )}
+                                    {item.status?.name && (
+                                    <p>
+                                        <b>Status:</b> {item.status?.name}
                                     </p>
                                     )}
 
@@ -311,6 +330,12 @@ const SuccessStatus = statusName === "Success";
                                     </p>
                                     )}
 
+                                    {item.assignBranch?.branchName && (
+                                    <p>
+                                        <b>Branch :</b> {item.assignBranch.branchName}
+                                    </p>
+                                    )}
+
                                     {item.assignedExecutive?.username && (
                                     <p>
                                         <b>Executive :</b> {item.assignedExecutive.username}
@@ -323,38 +348,41 @@ const SuccessStatus = statusName === "Success";
                                     </p>
                                     )}
 
-                                    {item.remarks && (
+
+                                    {item.softwareName && (
                                     <p>
-                                        <b>Remarks :</b> {item.remarks}
+                                        <b>Software Name :</b> {item.softwareName}
                                     </p>
                                     )}
 
-                                    {item.assignBranch?.branchName && (
+                                    {item.demoProgressDate && (
                                     <p>
-                                        <b>Branch :</b> {item.assignBranch.branchName}
-                                    </p>
-                                    )}
-
-                                    {item.city && (
-                                    <p>
-                                        <b>City :</b> {item.city}
-                                    </p>
-                                    )}
-                                    {item.district && (
-                                    <p>
-                                        <b>District :</b> {item.district}
-                                    </p>
-                                    )}
-
-                                    {item.businessType?.name && (
-                                    <p>
-                                        <b>Business :</b> {item.businessType.name}
+                                        <b>Demo Progress Date :</b> {item.demoProgressDate.substring(0, 10)}
                                     </p>
                                     )}
 
                                     {item.demoDate && (
                                     <p>
                                         <b>Demo Date :</b> {item.demoDate.substring(0, 10)}
+                                    </p>
+                                    )}
+
+                                    {item.remarks && (
+                                    <p>
+                                        <b>Remarks :</b> {item.remarks}
+                                    </p>
+                                    )}
+
+
+                                    {item.createdAt && (
+                                    <p>
+                                        <b>Creat Date:</b> {item.createdAt.substring(0,10)}
+                                    </p>
+                                    )}
+
+                                    {item._id && (
+                                    <p>
+                                        <b>Lead Id :</b> {item._id}
                                     </p>
                                     )}
 
@@ -374,7 +402,7 @@ const SuccessStatus = statusName === "Success";
             <div className="modal-overrlay">
                 <div className="modall-boox">
                     <h2>Update Lead Details</h2>
-                    <form className="formstatusupddate" onSubmit={handleSubmit(handleUpdateLead)}>
+                    <form className="" onSubmit={handleSubmit(handleUpdateLead)}>
                     <div className="form-groupp">
                         <label>Lead Id</label>
                         <input
@@ -421,6 +449,92 @@ const SuccessStatus = statusName === "Success";
                             })}
                         />
                     </div>
+
+                    {DemoProgressStatus && (
+                        <>
+                    <div className="demo-progress-details-box">
+
+                        <div className="demo-progress-details-title">
+                        <span>📅</span>
+
+                        <div>
+                            <h3>Demo Progress Details</h3>
+                            <p>Please enter the demo follow-up information</p>
+                        </div>
+                        </div>
+
+                        <div className="demo-progress-details-grid">
+
+                        {/* Demo Date */}
+                        <div className="form-groupp demo-progress-field">
+                            <label>
+                            Demo Progress Date <span>*</span>
+                            </label>
+
+                            <input
+                            type="date"
+                            {...register("demoProgressDate", {
+                                required: DemoProgressStatus
+                                ? "Demo Date is required"
+                                : false,
+                            })}
+                            
+                            />
+
+                            <small className="error">
+                            {errors.Progress?.message}
+                            </small>
+                        </div>
+
+                        {/* Software Name */}
+                        <div className="form-groupp demo-progress-field">
+                            <label>
+                                Software Name <span>*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                placeholder="Enter Software Name"
+                                {...register("softwareName", {
+                                    required: DemoProgressStatus
+                                        ? "Software Name is required"
+                                        : false,
+                                })}
+                            />
+
+                            <small className="error">
+                                {errors.softwareName?.message}
+                            </small>
+                        </div>
+
+                        {/* Address */}
+                        <div className="form-groupp demo-progress-field">
+                            <label>
+                            Address <span>*</span>
+                            </label>
+
+                            <textarea
+                            placeholder="Enter Address"
+                            {...register("address", {
+                                required: DemoProgressStatus
+                                ? "Address is required"
+                                : false,
+                            })}
+                            
+                            />
+
+                            <small className="error">
+                            {errors.address?.message}
+                            </small>
+                        </div>
+
+                        </div>
+                    </div>
+                    <div>
+
+                    </div>
+                    </>
+                    )}
 
                     {SuccessStatus && (
                     <div className="success-details-box">
@@ -471,6 +585,12 @@ const SuccessStatus = statusName === "Success";
                                 : false,
                             })}
                             placeholder="Enter Software Name"
+                            defaultValue={
+                                editLead?.softwareName &&
+                                editLead.softwareName !== "N/A"
+                                    ? editLead.softwareName
+                                    : ""
+                                }
                             />
 
                             <small className="error">
@@ -479,34 +599,48 @@ const SuccessStatus = statusName === "Success";
                         </div>
 
 
-                        {/* Installation Date */}
-                        <div className="form-groupp success-field">
+                            {/* Installation Date */}
+                            <div className="form-groupp success-field">
                             <label>
-                            Installation Date <span>*</span>
+                                Installation Date <span>*</span>
                             </label>
 
                             <input
-                            type="date"
-                            {...register("installationDate", {
+                                type="date"
+                                {...register("installationDate", {
                                 required: SuccessStatus
-                                ? "Installation Date is required"
-                                : false,
-                            })}
+                                    ? "Installation Date is required"
+                                    : false,
+                                })}
+                                defaultValue={
+                                editLead?.demoProgressDate &&
+                                editLead?.demoProgressDate !== "N/A"
+                                    ? editLead.demoProgressDate.substring(0, 10)
+                                    : ""
+                                }
                             />
 
                             <small className="error">
-                            {errors.installationDate?.message}
+                                {errors.installationDate?.message}
                             </small>
-                        </div>
-                        {/* Address */}
-                        <div className="form-group">
+                            </div>
+
+
+                            {/* Address */}
+                            <div className="form-group">
                             <label>Address</label>
+
                             <textarea
-                            rows="8"
-                            placeholder="Enter Address"
-                            {...register("address")}
+                                placeholder="Enter Address"
+                                {...register("address")}
+                                defaultValue={
+                                editLead?.address &&
+                                editLead.address !== "N/A"
+                                    ? editLead.address
+                                    : ""
+                                }
                             />
-                        </div>
+                            </div>
 
                         </div>
                     </div>

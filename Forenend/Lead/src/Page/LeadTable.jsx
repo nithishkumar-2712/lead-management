@@ -80,11 +80,10 @@ const LeadTable = ({ data }) => {
                   <th>#</th>
                   <th>Veiw</th>
                   <th>Action</th>
-                  <th>Tele Caller</th>
-                  <th>Lead Source</th>
+                  <th>Company-Name</th>
+                  <th>Person</th>
                   <th>Mobile</th>
-                  <th>Lead Date</th>
-                  {/* <th>Language</th> */}
+                  <th>Business</th>
                   <th>priority</th>
                   <th>Status</th>
                   <th>Remarks</th>
@@ -126,13 +125,11 @@ const LeadTable = ({ data }) => {
                           )}
                         </div>
                       </td>
-                      <td>{item.assignedUser.username}</td>
-                      <td>{item.leadSource?.name}</td>
+                      <td>{item.companyName}</td>
+                      <td>{item.contactPerson}</td>
                       <td>{item.mobile}</td>
-                      <td>{item.createdAt?.substring(0, 10)}</td>
-                      {/* <td>{item.preferredLanguage}</td> */}
+                      <td>{item.businessType.name}</td>
                       <td>{item.priority}</td>
-                      {/* <td>{item.reasonReject}</td> */}
                       <td>{item.status?.name}</td>
                       <td>{item.remarks}</td>
                     </tr>
@@ -141,63 +138,9 @@ const LeadTable = ({ data }) => {
                         <td colSpan="10">
                           <div className="lead-details">
 
-                            {hasValue(item._id) && (
+                            {hasValue(item.companyName) && (
                               <p>
-                                <b>Lead Id :</b> {item._id}
-                              </p>
-                            )}
-
-                            {hasValue(item.leadSource?.name) && (
-                              <p>
-                                <b>Lead Source :</b> {item.leadSource.name}
-                              </p>
-                            )}
-
-                            {hasValue(item.createdAt) && (
-                              <p>
-                                <b>Created Date :</b> {item.createdAt.substring(0, 10)}
-                              </p>
-                            )}
-
-                            {hasValue(item.assignedUser?.username) && (
-                              <p>
-                                <b>Tele Caller :</b> {item.assignedUser.username}
-                              </p>
-                            )}
-
-                            {hasValue(item.mobile) && (
-                              <p>
-                                <b>Mobile :</b> {item.mobile}
-                              </p>
-                            )}
-
-                            {hasValue(item.priority) && (
-                              <p>
-                                <b>Priority :</b> {item.priority}
-                              </p>
-                            )}
-
-                            {hasValue(item.remarks) && (
-                              <p>
-                                <b>Remarks :</b> {item.remarks}
-                              </p>
-                            )}
-
-                            {hasValue(item.assignBranch?.branchName) && (
-                              <p>
-                                <b>Branch :</b> {item.assignBranch.branchName}
-                              </p>
-                            )}
-
-                            {hasValue(item.assignBranchHead?.username) && (
-                              <p>
-                                <b>Branch Head :</b> {item.assignBranchHead.username}
-                              </p>
-                            )}
-
-                            {hasValue(item.assignedExecutive?.username) && (
-                              <p>
-                                <b>Executive :</b> {item.assignedExecutive.username}
+                                <b>Company Name :</b> {item.companyName}
                               </p>
                             )}
 
@@ -207,9 +150,9 @@ const LeadTable = ({ data }) => {
                               </p>
                             )}
 
-                            {hasValue(item.companyName) && (
+                            {hasValue(item.mobile) && (
                               <p>
-                                <b>Company Name :</b> {item.companyName}
+                                <b>Mobile :</b> {item.mobile}
                               </p>
                             )}
 
@@ -231,6 +174,91 @@ const LeadTable = ({ data }) => {
                               </p>
                             )}
 
+                            
+                            {hasValue(item.leadSource?.name) && (
+                              <p>
+                                <b>Lead Source :</b> {item.leadSource.name}
+                              </p>
+                            )}
+
+                            {hasValue(item.referenceDetails) && (
+                              <p>
+                                <b>Reference Details :</b> {item.referenceDetails}
+                              </p>
+                            )}
+
+                            {hasValue(item.softwareName) && (
+                              <p>
+                                <b>Software Name :</b> {item.softwareName}
+                              </p>
+                            )}
+
+                            {hasValue(item.demoProgressDate) && (
+                              <p>
+                                <b>demo Progress Date :</b> {item.demoProgressDate.substring(0,10)}
+                              </p>
+                            )}
+
+                            {hasValue(item.address) && (
+                              <p>
+                                <b>Address :</b> {item.address}
+                              </p>
+                            )}
+
+                            {hasValue(item.priority) && (
+                              <p>
+                                <b>Priority :</b> {item.priority}
+                              </p>
+                            )}
+
+                            {hasValue(item.remarks) && (
+                              <p>
+                                <b>Remarks :</b> {item.remarks}
+                              </p>
+                            )}
+
+                            {hasValue(item.status?.name) && (
+                              <p>
+                                <b>Status :</b> {item.status.name}
+                              </p>
+                            )}
+
+                            {hasValue(item.demoDate) && (
+                              <p>
+                                <b>Demo Date :</b> {item.demoDate.substring(0, 10)}
+                              </p>
+                            )}
+
+                            {hasValue(item.createdAt) && (
+                              <p>
+                                <b>Created Date :</b> {item.createdAt.substring(0, 10)}
+                              </p>
+                            )}
+
+                            {hasValue(item.assignedUser?.username) && (
+                              <p>
+                                <b>Tele Caller :</b> {item.assignedUser.username}
+                              </p>
+                            )}
+
+                            {hasValue(item.assignBranch?.branchName) && (
+                              <p>
+                                <b>Branch :</b> {item.assignBranch.branchName}
+                              </p>
+                            )}
+
+                            {hasValue(item.assignBranchHead?.username) && (
+                              <p>
+                                <b>Branch Head :</b> {item.assignBranchHead.username}
+                              </p>
+                            )}
+
+                            {hasValue(item.assignedExecutive?.username) && (
+                              <p>
+                                <b>Executive :</b> {item.assignedExecutive.username}
+                              </p>
+                            )}
+
                             {hasValue(item.contactNo) && (
                               <p>
                                 <b>Contact Number :</b> {item.contactNo}
@@ -249,51 +277,9 @@ const LeadTable = ({ data }) => {
                               </p>
                             )}
 
-                            {hasValue(item.referenceDetails) && (
+                            {hasValue(item._id) && (
                               <p>
-                                <b>Reference Details :</b> {item.referenceDetails}
-                              </p>
-                            )}
-
-                            {hasValue(item.status?.name) && (
-                              <p>
-                                <b>Status :</b> {item.status.name}
-                              </p>
-                            )}
-
-                            {hasValue(item.demoDate) && (
-                              <p>
-                                <b>Demo Date :</b> {item.demoDate.substring(0, 10)}
-                              </p>
-                            )}
-
-                            {hasValue(item.nextDemoDate) && (
-                              <p>
-                                <b>Next Demo Date :</b> {item.nextDemoDate.substring(0, 10)}
-                              </p>
-                            )}
-
-                            {hasValue(item.rescheduledDate) && (
-                              <p>
-                                <b>Rescheduled Date :</b> {item.rescheduledDate.substring(0, 10)}
-                              </p>
-                            )}
-
-                            {hasValue(item.demoRemarks) && (
-                              <p>
-                                <b>Demo Remarks :</b> {item.demoRemarks}
-                              </p>
-                            )}
-
-                            {hasValue(item.reasonReject) && (
-                              <p>
-                                <b>Reason Reject :</b> {item.reasonReject}
-                              </p>
-                            )}
-
-                            {hasValue(item.address) && (
-                              <p>
-                                <b>Address :</b> {item.address}
+                                <b>Lead Id :</b> {item._id}
                               </p>
                             )}
 

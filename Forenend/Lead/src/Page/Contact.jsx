@@ -123,28 +123,28 @@ if (!isLoaded) {
             <InfoCard 
               icon="fa-solid fa-location-dot"
               title="Office Address"
-              text="123 Business Avenue, New York, USA"
+              text="117,Karpaga Nagar 9th Street Tamil Nadu,Madurai-625007"
             />
 
 
             <InfoCard 
               icon="fa-solid fa-phone"
               title="Phone"
-              text="+1 (555) 123-4567"
+              text="+91 9677556163"
             />
 
 
             <InfoCard 
               icon="fa-solid fa-envelope"
               title="Email"
-              text="info@company.com"
+              text="jjenterprisesho@gmail.com"
             />
 
 
             <InfoCard 
               icon="fa-solid fa-clock"
               title="Business Hours"
-              text="Mon - Fri 9:00 AM - 6:00 PM"
+              text="Mon - Sat 9:00 AM - 6:30 PM"
             />
 
 
@@ -156,16 +156,16 @@ if (!isLoaded) {
 
               <div className="social-icons">
 
-                <a href="#">
+                <a href="https://www.facebook.com/share/19ADEhetTX/">
                   <i className="fab fa-facebook-f"></i>
                 </a>
 
-                <a href="#">
+                <a href="https://www.instagram.com/jjenterprisesmdu?igsi=MTNjcTZyejV6Zmg2YQ==">
                   <i className="fab fa-instagram"></i>
                 </a>
 
 
-                <a href="#">
+                <a href="https://www.linkedin.com/in/jj-enterprises-ho-8793152b7">
                   <i className="fab fa-linkedin-in"></i>
                 </a>
 
@@ -175,7 +175,7 @@ if (!isLoaded) {
                 </a>
 
 
-                <a href="#">
+                <a href="https://youtube.com/@jjenterprises-ho7701?si=9Lugb_sJAn_nYJXI">
                   <i className="fab fa-youtube"></i>
                 </a>
 

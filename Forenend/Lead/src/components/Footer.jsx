@@ -44,10 +44,10 @@ function Footer() {
                 <h3>Follow Us</h3>
 
                 <div className="social-icons">
-                <a href="#"><i className="fab fa-facebook-f"></i></a>
-                <a href="#"><i className="fab fa-instagram"></i></a>
-                <a href="#"><i className="fab fa-linkedin-in"></i></a>
-                <a href="#"><i className="fab fa-youtube"></i></a>
+                <a href="https://www.facebook.com/share/19ADEhetTX/"><i className="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/jjenterprisesmdu?igsi=MTNjcTZyejV6Zmg2YQ=="><i className="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/jj-enterprises-ho-8793152b7"><i className="fab fa-linkedin-in"></i></a>
+                <a href="https://youtube.com/@jjenterprises-ho7701?si=9Lugb_sJAn_nYJXI"><i className="fab fa-youtube"></i></a>
                 </div>
             </div>
             </div>

@@ -31,6 +31,7 @@ app.use(
   cors({
     origin: [
       process.env.Backend_url,
+      "http://10.116.91.250:5173"
     ],
     credentials: true,
   })
@@ -39,6 +40,7 @@ const io = new Server(server, {
   cors: {
     origin: [
       process.env.Backend_url,
+      "http://10.116.91.250:5173"
     ],
     credentials: true,
   },

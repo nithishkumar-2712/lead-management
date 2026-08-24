@@ -1,6 +1,6 @@
 import React from "react";
 import "./About.css";
-
+import about from "../assets/images/About.avif";
 const About = () => {
   return (
     <section className="about-section">
@@ -8,7 +8,7 @@ const About = () => {
 
         <div className="image">
           <img
-            src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=900"
+            src={about}
             alt="JJEnterprises"
           />
         </div>

@@ -61,12 +61,13 @@
 .cardd {
   position: relative;
   background: #fff;
-  padding: 20px;
+  padding: 10px !important;
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
   overflow: hidden;
 }
+
 
 .cardd:hover {
   transform: translateY(-5px);
@@ -139,7 +140,15 @@
     gap: 20px;
 }
 .header{
-  display: none;
+  font-weight:800;
+  font-size:21px;
+  text-align: center;
+  margin:8px !important;
+}
+.form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px !important ;
 }
 }
 
@@ -161,7 +170,7 @@
 .form {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    gap: 8px ;
 }
 
 /* Table இல்லாத போது */
@@ -826,7 +835,7 @@ body{
 .para{
   text-align: center;
   font-weight:600;
-  font-size:16px;
+  font-size:14px;
 }
   .cardd{
     padding:12px;
@@ -948,14 +957,44 @@ body{
     border:1px solid #eee;
     transition:.3s;
     cursor:pointer;
-    height: 120px;;
+    height: 126px;;
 }
+
 
 .mobile-status-card:active{
     transform:scale(.97);
 }
 
 /* Icon */
+/* Lead - User - */
+.status-icoon{
+    font-size:26px;   /* Before 44px → Now 26px */
+    /* margin-bottom:6px; */
+}
+/* Lead User Ui */
+.Lead-mobile-status-card.pending .status-icoon{
+    color:#EF4444;
+}
+.mobile-status-card{
+    background:#fafafa;
+    border-radius:14px;
+    padding:14px 10px;
+    text-align:center;
+    border:1px solid #eee;
+    transition:.3s;
+    cursor:pointer;
+    height: 123px;;
+}
+.Lead-mobile-status-card{
+    background:#fafafa;
+    border-radius:14px;
+    padding:6px 10px;
+    text-align:center;
+    border:1px solid #eee;
+    transition:.3s;
+    cursor:pointer;
+    height: 103px;;
+}
 
 .status-icon{
     font-size:26px;   /* Before 44px → Now 26px */
@@ -983,30 +1022,122 @@ body{
 
 /* Colors */
 
-.mobile-status-card.demo{
-    border-top:4px solid #10B981;
-}
-.mobile-status-card.call{
-    border-top:4px solid #F59E0B;
-}
-.mobile-status-card.success{
-    border-top:4px solid #2563EB;
-}
-.mobile-status-card.pending{
-    border-top:4px solid #EF4444;
+.mobile-status-card.demo {
+  border-top: 4px solid #2563EB;
+  background: #dce7f5 !important;
 }
 
-.mobile-status-card.demo .status-icon{
-    color:#10B981;
+.mobile-status-card.call {
+  border-top: 4px solid #F59E0B;
+  background: #f3edd5 !important;
+}
+
+.mobile-status-card.success {
+  border-top: 4px solid #10B981; /* Success - Green */
+  background: #dcfce7 !important;
+}
+
+.mobile-status-card.pending {
+  border-top: 4px solid #EF4444;
+  background: #f0d8d8 !important;
+}
+.mobile-status-card.demo-progress {
+  border-top: 4px solid #7C3AED; /* Demo Progress - Purple */
+  background: #e5e2f7 !important;
+}
+
+.mobile-status-card.executive-assigned {
+  border-top: 4px solid #06B6D4; /* Executive Assigned - Cyan */
+  background: #d9f2f4 !important;
+}
+
+.mobile-status-card.demo .status-icon {
+  color: #2563EB;
 }
 .mobile-status-card.call .status-icon{
     color:#F59E0B;
 }
 .mobile-status-card.success .status-icon{
-    color:#2563EB;
+    color:#10B981;
 }
 .mobile-status-card.pending .status-icon{
     color:#EF4444;
+}
+
+.mobile-status-card.demo-progress .status-icon{
+    color:#7C3AED;
+}
+.mobile-status-card.executive-assigned .status-icon{
+    color:#06B6D4;
+}
+/* Title */
+
+.Lead-mobile-status-card h4{
+    font-size:13px;
+    font-weight:600;
+    color:#666;
+    /* margin:4px 0; */
+}
+
+/* Count */
+
+.Lead-mobile-status-card h2{
+    font-size:22px;
+    font-weight:800;
+    margin-top:1px;
+
+    color:#111;
+}
+
+/* Colors */
+
+.Lead-mobile-status-card.demo {
+  border-top: 4px solid #2563EB;
+  background: #dce7f5 !important;
+}
+
+.Lead-mobile-status-card.call {
+  border-top: 4px solid #F59E0B;
+  background: #f3edd5 !important;
+}
+
+.Lead-mobile-status-card.success {
+  border-top: 4px solid #10B981; /* Success - Green */
+  background: #dcfce7 !important;
+}
+
+.Lead-mobile-status-card.pending {
+  border-top: 4px solid #EF4444;
+  background: #f0d8d8 !important;
+}
+.Lead-mobile-status-card.demo-progress {
+  border-top: 4px solid #7C3AED; /* Demo Progress - Purple */
+  background: #e5e2f7 !important;
+}
+
+.Lead-mobile-status-card.executive-assigned {
+  border-top: 4px solid #06B6D4; /* Executive Assigned - Cyan */
+  background: #d9f2f4 !important;
+}
+
+.Lead-mobile-status-card.demo .status-icon {
+  color: #2563EB;
+}
+.Lead-mobile-status-card.call .status-icon{
+    color:#F59E0B;
+}
+.Lead-mobile-status-card.success .status-icon{
+    color:#10B981;
+}
+.Lead-mobile-status-card.pending .status-icon{
+    color:#EF4444;
+}
+
+.Lead-mobile-status-card.demo-progress .status-icon{
+    color:#7C3AED;
+}
+.Lead-mobile-status-card.executive-assigned .status-icon{
+    color:#06B6D4;
 }
 
 }

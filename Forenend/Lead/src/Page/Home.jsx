@@ -4,7 +4,7 @@ import BranchesStart from './BranchesStart'
 import Services from './Services'
 import Headersection from './Headersection'
 import Contact from './Contact'
-
+import Footer from"../components/Footer"
  function Home() {
   return (
     <>
@@ -13,6 +13,7 @@ import Contact from './Contact'
     <BranchesStart/>
     <Services/>
     <Contact/>
+    <Footer/>
       
     </>
   )

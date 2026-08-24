@@ -10,7 +10,7 @@ import {
   FaCheck,
 } from "react-icons/fa6";
 
-import image1 from"../assets/images/ebusiness-app.png"
+import image1 from"../assets/images/ebusiness-app.avif"
 const topServices = [
   {
     icon: <FaRocket />,

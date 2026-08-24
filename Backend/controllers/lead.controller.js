@@ -541,15 +541,15 @@ const updateLeadstatus = async (req, res) => {
       status,
       remarks,
       software,
-      // nextDemoDate,
-      // demoRemarks,
+      address,
+      demoProgressDate,
       rescheduledDate,
       license,
       softwareName,
       installationDate,
       
     } = req.body;
-    console.log(req.body)
+    console.log(softwareName)
     // Update Lead
     const updatedLead = await LeadModel.findByIdAndUpdate(
       id,
@@ -557,8 +557,9 @@ const updateLeadstatus = async (req, res) => {
         status,
         remarks,
         Software: software,
-        // ifCallLater: rescheduledDate,
-        // demoRemarks:demoRemarks,
+        demoProgressDate,
+        address,
+        softwareName:softwareName,
         rescheduledDate:rescheduledDate,
         // nextDemoDate:nextDemoDate
       },
@@ -588,14 +589,15 @@ const updateLeadstatus = async (req, res) => {
         companyName: updatedLead.companyName,
         mobile: updatedLead.mobile,
         licenseId: license,
+        installationDate :installationDate,
         softwareName,
-        installationDate,
+        address:address
       });
     }
 
     // Update all connected clients
     global.io.emit("leadUpdated"); 
-
+    // console.log(newLicense)
     return res.status(200).json({
       success: true,
       message: "Lead Updated Successfully",
@@ -697,6 +699,7 @@ const OwnLeadinsulation = async (req, res) => {
       priority,
       demoDate,
       referenceDetails,
+      demoProgressDate,
       license,
       softwareName,
       installationDate,
@@ -707,8 +710,21 @@ const OwnLeadinsulation = async (req, res) => {
     // =====================================
     // 1. Find User using userId
     // =====================================
+        const existingLead = await LeadModel.findOne({ mobile });
 
-    const user = await UserModel.findById(UserId);
+    if (existingLead) {
+      return res.status(200).json({
+        success: true,
+        message: "Mobile number already exists",
+        data: existingLead,
+      });
+    }
+
+
+
+    const user = await UserModel.findById(UserId).populate("userType");
+    const Role=user.userType.roleName
+    // console.log(Role)
 
     if (!user) {
       return res.status(404).json({
@@ -782,7 +798,7 @@ const OwnLeadinsulation = async (req, res) => {
       Software: software,
       district,
       city,
-
+      demoProgressDate,
       // Automatically take user's branch
       assignBranch: assignBranch,
 
@@ -799,6 +815,7 @@ const OwnLeadinsulation = async (req, res) => {
 
       // Branch Head of that branch
       assignBranchHead: branchHeadId,
+      softwareName
     });
 
     // =====================================
@@ -851,6 +868,7 @@ const OwnLeadinsulation = async (req, res) => {
       message: "Lead Created Successfully",
 
       data: updatedLead,
+      Role:Role,
 
       license: newLicense,
     });

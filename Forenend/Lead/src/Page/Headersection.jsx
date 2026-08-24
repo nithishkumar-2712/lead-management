@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import "./Headersection.css";
 
-import hero1 from "../assets/images/hero1.jpg";
-import hero2 from "../assets/images/hero2.jpg";
-import hero3 from "../assets/images/hero3.jpg";
-import hero4 from "../assets/images/parmacy.jpg";
-import hero5 from "../assets/images/parmacy2.jpg";
-import hero6 from "../assets/images/hms2.jpg";
-import hero7 from "../assets/images/hms.jpg";
-import hero8 from "../assets/images/hero4.jpg";
-import hero9 from "../assets/images/hero5.jpg";
+import hero1 from "../assets/images/hero1.avif";
+import hero2 from "../assets/images/hero2.avif";
+import hero3 from "../assets/images/hero3.avif";
+import hero4 from "../assets/images/parmacy.avif";
+import hero5 from "../assets/images/parmacy2.avif";
+import hero6 from "../assets/images/hms2.avif";
+import hero7 from "../assets/images/hms.avif";
+import hero8 from "../assets/images/hero4.avif";
+import hero9 from "../assets/images/hero5.avif";
 import {useNavigate}from"react-router-dom"
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
@@ -137,7 +137,7 @@ const Headersection = () => {
 
           <button 
           className="btn-primary"
-          onClick={() => navigate("/contact")}
+          // onClick={() => navigate("/contact")}
 
           >
             Get Started
@@ -145,7 +145,7 @@ const Headersection = () => {
 
         <button
           className="btn-secondary"
-          onClick={() => navigate("/Contact")}
+          // onClick={() => navigate("/Contact")}
         >
           Contact Us
         </button>

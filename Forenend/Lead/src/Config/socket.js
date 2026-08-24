@@ -1,6 +1,6 @@
 import { io } from "socket.io-client";
 
-const socket = io(import.meta.env.VITE_API_URL, {
+const socket = io("http://10.116.91.250:3000", {
   withCredentials: true,
 });
 

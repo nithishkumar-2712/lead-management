@@ -12,7 +12,7 @@ function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const{isLoggedIn,tokencheck}=useContext(AppContext);
-  console.log(isLoggedIn)
+  // console.log(isLoggedIn)
   const {
     register,
     handleSubmit,
@@ -51,7 +51,7 @@ const onSubmit = async (send) => {
       title: "Login Successful",
       text: data.message,
       confirmButtonColor: "#2563EB",
-      timer: 2000,
+      timer: 3000,
       showConfirmButton: false,
     });
 

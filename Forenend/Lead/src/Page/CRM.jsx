@@ -10,7 +10,7 @@ import Swal from "sweetalert2";
 import "react-loading-skeleton/dist/skeleton.css";
 import {
   FaCodeBranch,
-  FaCalendarAlt,
+  FaTasks,
   FaPhoneVolume,
   FaTimesCircle,
   FaCheckCircle
@@ -245,6 +245,10 @@ const statusCount = useMemo(() => {
           acc.moreDemo++;
           break;
 
+        case "DemoProgress":
+          acc.DemoProgress++;
+          break;  
+
         case "Pending":
           acc.pending++;
           break;
@@ -266,6 +270,7 @@ const statusCount = useMemo(() => {
       rescheduled: 0,
       success: 0,
       moreDemo: 0,
+      DemoProgress: 0,
       pending: 0,
     }
   );
@@ -599,9 +604,9 @@ const {
                 <thead>
                   <tr>
                     <th>Demo</th>
-                    <th>Busy / Call Later</th>
+                    <th>Follow-up</th>
                     <th>Branch</th>
-                    <th>No Interest</th>
+                    <th>DemoProgress</th>
                     <th>Rejected</th>
                   </tr>
                 </thead>
@@ -638,9 +643,9 @@ const {
                       <td>
                         <button
                           className="status-btn nointerest"
-                          onClick={() => handleStatusClick("No Interest")}
+                          onClick={() => handleStatusClick("DemoProgress")}
                         >
-                          {statusCount.noInterest}
+                          {statusCount.DemoProgress}
                         </button>
                       </td>
 
@@ -756,7 +761,7 @@ const {
 
                 {/* Branch */}
                 <div
-                  className="mobile-status-card demo"
+                  className="Lead-mobile-status-card demo"
                   onClick={() => handleStatusClick("Branch")}
                 >
                   <FaCodeBranch className="status-icon" />
@@ -776,33 +781,45 @@ const {
 
                   {/* Call Later */}
                 <div
-                  className="mobile-status-card success"
+                  className="Lead-mobile-status-card call"
                   onClick={() => handleStatusClick("Busy / Call Later")}
                 >
                   <FaPhoneVolume className="status-icon" />
-                  <h4>Busy/CallLate</h4>
+                  <h4>Follow-up</h4>
                   <h2>{statusCount.busy}</h2>
+                </div>
+              
+                {/* DemoProgress */}
+                <div
+                  className="Lead-mobile-status-card demo-progress "
+                  onClick={() => handleStatusClick("DemoProgress")}
+                >
+                  <FaTasks className="status-icon" />
+                  <h4>Demo Progress</h4>
+                  <h2>{statusCount.DemoProgress}</h2>
+                </div>
+                
+                {/* Rejected */}
+                <div
+                  className="Lead-mobile-status-card pending"
+                  onClick={() => handleStatusClick("Rejected")}
+                >
+                  <FaTimesCircle className="status-icoon" />
+                  <h4>Rejected</h4>
+                  <h2>{statusCount.rejected}</h2>
                 </div>
                 
                 {/* Success */}
                 <div
-                  className="mobile-status-card success"
+                  className="Lead-mobile-status-card success"
                   onClick={() => handleStatusClick("Success")}
                 >
                   <FaCheckCircle className="status-icon" />
                   <h4>Success</h4>
                   <h2>{statusCount.success}</h2>
                 </div>
-                
-                {/* Rejected */}
-                <div
-                  className="mobile-status-card pending"
-                  onClick={() => handleStatusClick("Rejected")}
-                >
-                  <FaTimesCircle className="status-icon" />
-                  <h4>Rejected</h4>
-                  <h2>{statusCount.rejected}</h2>
-                </div> 
+
+
 
               </div>
 

@@ -2,6 +2,7 @@ import React, { useContext, useState , useEffect, useRef} from "react";
 import "./Navbar.css";
 import { Link ,useNavigate } from "react-router-dom";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import Profile from "../assets/images/Profile.avif";
 import axios from "../Config/axios";
 import Swal from "sweetalert2";
 import { AppContext } from "../App";
@@ -52,7 +53,7 @@ const LogOut = async () => {
         title: "Logged Out!",
         text: data.message,
         icon: "success",
-        timer: 1500,
+        timer: 1700,
         showConfirmButton: false,
       });
 
@@ -297,7 +298,7 @@ useEffect(() => {
                 </span>
 
                 <img
-                    src="https://i.pravatar.cc/150"
+                    src={Profile}
                     alt="Profile"
                 />
 
@@ -351,7 +352,7 @@ useEffect(() => {
                 }
             >
                 <img
-                src="https://i.pravatar.cc/150"
+                src={Profile}
                 alt="Profile"
                 />
             </div>

@@ -51,6 +51,10 @@ const leadSchema = new mongoose.Schema(
     software: {
       type: String,
     },
+    softwareName: {
+      type: String,
+      default: "N/A",
+    },
 
     district: {
       type:String,
@@ -91,6 +95,10 @@ const leadSchema = new mongoose.Schema(
     // },
 
     demoDate: {
+      type: Date,
+      default: null,
+    },
+    demoProgressDate: {
       type: Date,
       default: null,
     },
