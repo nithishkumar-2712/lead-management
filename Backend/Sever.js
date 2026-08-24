@@ -30,8 +30,7 @@ app.use(cookieParser())
 app.use(
   cors({
     origin: [
-      process.env.Backend_url,
-      "http://10.116.91.250:5173"
+      process.env.Backend_url
     ],
     credentials: true,
   })
@@ -39,8 +38,7 @@ app.use(
 const io = new Server(server, {
   cors: {
     origin: [
-      process.env.Backend_url,
-      "http://10.116.91.250:5173"
+      process.env.Backend_url
     ],
     credentials: true,
   },
