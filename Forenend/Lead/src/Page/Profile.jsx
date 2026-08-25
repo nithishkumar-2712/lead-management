@@ -5,6 +5,7 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import Customhook from "../components/Customhook";
+import ProfileLogo from "../assets/images/ProfileLogo.avif";
 
 function Profile() {
   const { id } = useParams();
@@ -55,7 +56,7 @@ function Profile() {
 
         <div className="profile-left">
             <img
-            src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+            src={ProfileLogo}
             alt="User"
             className="user-img"
             />

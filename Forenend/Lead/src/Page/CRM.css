@@ -165,7 +165,7 @@
 .lead-section{
   display: flex;
   gap: 25px;
-  padding: 40px;
+  padding: 40px 0px !important;
 }
 .form {
     display: grid;

@@ -7,6 +7,7 @@ import {useNavigate}from"react-router-dom"
 import { AppContext } from "../App";
 import Swal from "sweetalert2";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import ProfileLogo from "../assets/images/ProfileLogo.avif";
 function Login() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
@@ -91,7 +92,7 @@ const onSubmit = async (send) => {
           <p>Welcome Back! Login to continue.</p>
 
           <img
-            src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+            src={ProfileLogo}
             alt="login"
           />
         </div>
