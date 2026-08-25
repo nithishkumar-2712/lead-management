@@ -67,11 +67,11 @@ const handleUpdateEdit = (lead) => {
     setOpenModal(true);
 };
 
-const handleAssignEdit = (lead) => {
-    setEditLead(lead);
-    setOpenModal(false);
-    setShowAssignModal(true);
-};
+// const handleAssignEdit = (lead) => {
+//     setEditLead(lead);
+//     setOpenModal(false);
+//     setShowAssignModal(true);
+// };
 
 const handleUpdateLead = async (formData) => {
 //   console.log(formData);
@@ -229,7 +229,7 @@ const DemoDoneStatus = statusName === "DemoDone";
 
                 {expandedRow === item._id && (
                 <tr className="details-row">
-                    <td colSpan="10">
+                    <td colSpan="11">
                     <div className="lead-details">
 
                         {hasValue(item.companyName) && (
@@ -314,6 +314,16 @@ const DemoDoneStatus = statusName === "DemoDone";
                         </p>
                         )}
 
+                        {hasValue(item.softwareName) && (
+                        <p>
+                            <b>Software Name :</b> {item.softwareName}
+                        </p>
+                        )}
+                        {hasValue(item.demoProgressDate) && (
+                        <p>
+                            <b>demo Progress Date :</b> {item.demoProgressDate}
+                        </p>
+                        )}
                         {hasValue(item.remarks) && (
                         <p>
                             <b>Remarks :</b> {item.remarks}

@@ -13,6 +13,13 @@ import Swal from "sweetalert2";
 
 const Leadheadertable = ({ data ,onLeadUpdated}) => {
     const navigate = useNavigate();
+    const hasValue = (value) => {
+        if (value === null || value === undefined) return false;
+
+        const text = String(value).trim().toLowerCase();
+
+        return text !== "" && text !== "n/a" && text !== "na";
+    };
     // console.log(data)
 const {
     register,
@@ -271,7 +278,7 @@ const DemoDoneStatus = statusName === "DemoDone";
                                 <td colSpan="11">
                                 <div className="lead-details">
 
-                                    {item.companyName && (
+                                    {hasValue(item.companyName) && (
                                     <p>
                                         <b>Company Name :</b> {item.companyName}
                                     </p>
@@ -283,104 +290,112 @@ const DemoDoneStatus = statusName === "DemoDone";
                                     </p>
                                     )}
 
-                                    {item.contactNo && (
+                                    {hasValue(item.contactNo) && (
                                     <p>
                                         <b>ContactNo :</b> {item.contactNo}
                                     </p>
                                     )}
 
-                                    {item.businessType?.name && (
+                                    {hasValue(item.businessType?.name) && (
                                     <p>
                                         <b>Business :</b> {item.businessType.name}
                                     </p>
                                     )}
 
-                                    {item.city && (
+                                    {hasValue(item.city) && (
                                     <p>
                                         <b>City :</b> {item.city}
                                     </p>
                                     )}
-                                    {item.district && (
+                                    {hasValue(item.district) && (
                                     <p>
                                         <b>District :</b> {item.district}
                                     </p>
                                     )}
 
 
-                                    {item.leadSource?.name && (
+                                    {hasValue(item.leadSource?.name) && (
                                     <p>
                                         <b>Lead Source :</b> {item.leadSource.name}
                                     </p>
                                     )}
-                                    {item.status?.name && (
+                                    {hasValue(item.status?.name) && (
                                     <p>
                                         <b>Status:</b> {item.status?.name}
                                     </p>
                                     )}
 
-                                    {item.assignedUser?.username && (
+                                    {hasValue(item.assignedUser?.username) && (
                                     <p>
                                         <b>Tele Caller :</b> {item.assignedUser.username}
                                     </p>
                                     )}
 
-                                    {item.assignBranchHead?.username && (
-                                    <p>
-                                        <b>Branch Head :</b> {item.assignBranchHead.username}
-                                    </p>
-                                    )}
-
-                                    {item.assignBranch?.branchName && (
+                                    {hasValue(item.assignBranch?.branchName) && (
                                     <p>
                                         <b>Branch :</b> {item.assignBranch.branchName}
                                     </p>
                                     )}
 
-                                    {item.assignedExecutive?.username && (
+                                    {hasValue(item.assignBranchHead?.username) && (
+                                    <p>
+                                        <b>Branch Head :</b> {item.assignBranchHead.username}
+                                    </p>
+                                    )}
+
+  
+
+                                    {hasValue(item.assignedExecutive?.username) && (
                                     <p>
                                         <b>Executive :</b> {item.assignedExecutive.username}
                                     </p>
                                     )}
 
-                                    {item.priority && (
+                                    {hasValue(item.priority) && (
                                     <p>
                                         <b>Priority :</b> {item.priority}
                                     </p>
                                     )}
 
 
-                                    {item.softwareName && (
+                                    {hasValue(item.softwareName) && (
                                     <p>
                                         <b>Software Name :</b> {item.softwareName}
                                     </p>
                                     )}
 
-                                    {item.demoProgressDate && (
+                                    {hasValue(item.demoProgressDate) && (
                                     <p>
                                         <b>Demo Progress Date :</b> {item.demoProgressDate.substring(0, 10)}
                                     </p>
                                     )}
 
-                                    {item.demoDate && (
+                                    {hasValue(item.demoDate) && (
                                     <p>
                                         <b>Demo Date :</b> {item.demoDate.substring(0, 10)}
                                     </p>
                                     )}
 
-                                    {item.remarks && (
+                                    {hasValue(item.remarks) && (
                                     <p>
                                         <b>Remarks :</b> {item.remarks}
                                     </p>
                                     )}
+                                    {hasValue(item.address) && (
+                                        <p>
+                                            <b>Address :</b> {item.address}
+                                        </p>
+                                    )}
 
 
-                                    {item.createdAt && (
+                                    {hasValue(item.createdAt) && (
                                     <p>
                                         <b>Creat Date:</b> {item.createdAt.substring(0,10)}
                                     </p>
                                     )}
 
-                                    {item._id && (
+
+                                    {hasValue(item._id) && (
                                     <p>
                                         <b>Lead Id :</b> {item._id}
                                     </p>
