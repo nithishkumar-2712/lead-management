@@ -180,7 +180,7 @@ const statusName =
 Leadstatus?.find((item) => item._id === selectedStatus)?.name || "";
 
 const SuccessStatus = statusName === "Success";
-const DemoProgressStatus = statusName === "DemoProgress";
+const DemoDoneStatus = statusName === "DemoDone";
 
   return (
     <>
@@ -450,7 +450,7 @@ const DemoProgressStatus = statusName === "DemoProgress";
                         />
                     </div>
 
-                    {DemoProgressStatus && (
+                    {DemoDoneStatus && (
                         <>
                     <div className="demo-progress-details-box">
 
@@ -474,7 +474,7 @@ const DemoProgressStatus = statusName === "DemoProgress";
                             <input
                             type="date"
                             {...register("demoProgressDate", {
-                                required: DemoProgressStatus
+                                required: DemoDoneStatus
                                 ? "Demo Date is required"
                                 : false,
                             })}
@@ -496,7 +496,7 @@ const DemoProgressStatus = statusName === "DemoProgress";
                                 type="text"
                                 placeholder="Enter Software Name"
                                 {...register("softwareName", {
-                                    required: DemoProgressStatus
+                                    required: DemoDoneStatus
                                         ? "Software Name is required"
                                         : false,
                                 })}
@@ -516,7 +516,7 @@ const DemoProgressStatus = statusName === "DemoProgress";
                             <textarea
                             placeholder="Enter Address"
                             {...register("address", {
-                                required: DemoProgressStatus
+                                required: DemoDoneStatus
                                 ? "Address is required"
                                 : false,
                             })}

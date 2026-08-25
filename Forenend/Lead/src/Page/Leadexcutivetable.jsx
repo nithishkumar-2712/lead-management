@@ -74,7 +74,7 @@ const handleAssignEdit = (lead) => {
 };
 
 const handleUpdateLead = async (formData) => {
-  console.log(formData);
+//   console.log(formData);
 
   try {
      setIsUpdating(true);
@@ -135,7 +135,7 @@ const statusName =
 Leadstatus?.find((item) => item._id === selectedStatus)?.name || "";
 
 const SuccessStatus = statusName === "Success";
-const DemoProgressStatus = statusName === "DemoProgress";
+const DemoDoneStatus = statusName === "DemoDone";
 
 // const isRescheduled = statusName === "Rescheduled";
 
@@ -242,6 +242,11 @@ const DemoProgressStatus = statusName === "DemoProgress";
                             <b>Person :</b> {item.contactPerson}
                         </p>
                         )}
+                        {hasValue(item.mobile) && (
+                        <p>
+                            <b>Mobile :</b> {item.mobile}
+                        </p>
+                        )}
 
                         {hasValue(item.businessType?.name) && (
                         <p>
@@ -267,16 +272,18 @@ const DemoProgressStatus = statusName === "DemoProgress";
                         </p>
                         )}
 
-                        {hasValue(item.demoProgressDate) && (
-                        <p>
-                            <b>Demo Progress Date :</b> {item.demoProgressDate}
-                        </p>
-                        )}
                         {hasValue(item.softwareName) && (
                         <p>
                             <b>software Name :</b> {item.softwareName}
                         </p>
                         )}
+
+                        {hasValue(item.demoProgressDate) && (
+                        <p>
+                            <b>Demo Progress Date :</b> {item.demoProgressDate.substring(0, 10)}
+                        </p>
+                        )}
+
                         {hasValue(item.priority) && (
                         <p>
                             <b>Priority :</b> {item.priority}
@@ -396,7 +403,7 @@ const DemoProgressStatus = statusName === "DemoProgress";
                             })}
                         />
                     </div>
-                    {DemoProgressStatus && (
+                    {DemoDoneStatus && (
                         <>
                     <div className="demo-progress-details-box">
 
@@ -420,7 +427,7 @@ const DemoProgressStatus = statusName === "DemoProgress";
                             <input
                             type="date"
                             {...register("demoProgressDate", {
-                                required: DemoProgressStatus
+                                required: DemoDoneStatus
                                 ? "Demo Date is required"
                                 : false,
                             })}
@@ -441,7 +448,7 @@ const DemoProgressStatus = statusName === "DemoProgress";
                                 type="text"
                                 placeholder="Enter Software Name"
                                 {...register("softwareName", {
-                                    required: DemoProgressStatus
+                                    required: DemoDoneStatus
                                         ? "Software Name is required"
                                         : false,
                                 })}
@@ -461,7 +468,7 @@ const DemoProgressStatus = statusName === "DemoProgress";
                             <textarea
                             placeholder="Enter Address"
                             {...register("address", {
-                                required: DemoProgressStatus
+                                required: DemoDoneStatus
                                 ? "Address is required"
                                 : false,
                             })}

@@ -164,8 +164,8 @@ function BranchHead() {
             acc.success++;
             break;
 
-          case "DemoProgress":
-            acc.DemoProgress++;
+          case "DemoDone":
+            acc.DemoDone++;
             break;
 
          case "Pending":
@@ -197,7 +197,7 @@ function BranchHead() {
         callAgain: 0,
         rescheduled: 0,
         success: 0,
-        DemoProgress: 0,
+        DemoDone: 0,
         moreDemo: 0,
         rejected: 0,
         pending: 0,
@@ -516,7 +516,7 @@ function BranchHead() {
               <tr>
                 <th>Rejected</th>
                 <th>Follow-up</th>
-                <th>Demo Progress</th>
+                <th>Demo Done</th>
               </tr>
             </thead>
 
@@ -552,11 +552,11 @@ function BranchHead() {
                     className="status-btn branch"
                     onClick={() =>
                       handleStatusClick(
-                        "DemoProgress"
+                        "DemoDone"
                       )
                     }
                   >
-                    {statusCount.DemoProgress}
+                    {statusCount.DemoDone}
                   </button>
                 </td>
 
@@ -660,11 +660,11 @@ function BranchHead() {
 
             <div
               className="mobile-status-card demo-progress "
-              onClick={() => handleStatusClick("DemoProgress")}
+              onClick={() => handleStatusClick("DemoDone")}
             >
               <FaTasks className="status-icon" />
-              <h4>Demo Progress</h4>
-              <h2>{statusCount.DemoProgress}</h2>
+              <h4>Demo Done</h4>
+              <h2>{statusCount.DemoDone}</h2>
             </div>
 
             <div

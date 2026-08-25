@@ -44,7 +44,7 @@ const selectedStatusName = Leadstatus?.find(
 )?.name;
 
 const SuccessStatus = selectedStatusName === "Success";
-const DemoProgressStatus = selectedStatusName === "DemoProgress";
+const DemoDoneStatus = selectedStatusName === "DemoDone";
 
 const onSubmit = async (formData) => {
   try {
@@ -410,7 +410,7 @@ const onSubmit = async (formData) => {
                 </div>
               </>
             )}
-                        {DemoProgressStatus && (
+                        {DemoDoneStatus && (
               <>
                     <div className="demo-progress-details-box">
 
@@ -434,7 +434,7 @@ const onSubmit = async (formData) => {
                             <input
                             type="date"
                             {...register("demoProgressDate", {
-                                required: DemoProgressStatus
+                                required: DemoDoneStatus
                                 ? "Demo Date is required"
                                 : false,
                             })}
@@ -456,7 +456,7 @@ const onSubmit = async (formData) => {
                                 type="text"
                                 placeholder="Enter Software Name"
                                 {...register("softwareName", {
-                                    required: DemoProgressStatus
+                                    required: DemoDoneStatus
                                         ? "Software Name is required"
                                         : false,
                                 })}
@@ -476,7 +476,7 @@ const onSubmit = async (formData) => {
                             <textarea
                             placeholder="Enter Address"
                             {...register("address", {
-                                required: DemoProgressStatus
+                                required:DemoDoneStatus
                                 ? "Address is required"
                                 : false,
                             })}

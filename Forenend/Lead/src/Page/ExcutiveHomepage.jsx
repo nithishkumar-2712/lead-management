@@ -198,8 +198,8 @@ function ExcutiveHomepage() {
             acc.rescheduled++;
             break;
 
-          case "DemoProgress":
-            acc.DemoProgress++;
+          case "DemoDone":
+            acc.DemoDone++;
             break;  
 
           case "Success":
@@ -226,7 +226,7 @@ function ExcutiveHomepage() {
         yes: 0,
         callAgain: 0,
         rescheduled: 0,
-        DemoProgress: 0,
+        DemoDone: 0,
         success: 0,
         pending: 0,
         rejected: 0,
@@ -536,7 +536,7 @@ function ExcutiveHomepage() {
                 <th>Demo Assigned</th>
                 <th>Yes</th>
                 <th>Call Again</th>
-                <th>Demo Progress</th>
+                <th>DemoDone</th>
               </tr>
 
             </thead>
@@ -593,10 +593,10 @@ function ExcutiveHomepage() {
                   <button
                     className="status-btn branch"
                     onClick={() =>
-                      handleStatusClick("DemoProgress")
+                      handleStatusClick("DemoDone")
                     }
                   >
-                    {statusCount.DemoProgress}
+                    {statusCount.DemoDone}
                   </button>
 
                 </td>
@@ -713,11 +713,11 @@ function ExcutiveHomepage() {
 
             <div
               className="mobile-status-card demo-progress "
-              onClick={() => handleStatusClick("DemoProgress")}
+              onClick={() => handleStatusClick("DemoDone")}
             >
               <FaTasks className="status-icon" />
-              <h4>Demo Progress</h4>
-              <h2>{statusCount.DemoProgress}</h2>
+              <h4>Demo Done</h4>
+              <h2>{statusCount.DemoDone}</h2>
             </div>
 
             <div

@@ -549,7 +549,7 @@ const updateLeadstatus = async (req, res) => {
       installationDate,
       
     } = req.body;
-    console.log(softwareName)
+    // console.log(softwareName)
     // Update Lead
     const updatedLead = await LeadModel.findByIdAndUpdate(
       id,

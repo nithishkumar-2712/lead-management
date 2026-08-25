@@ -245,8 +245,8 @@ const statusCount = useMemo(() => {
           acc.moreDemo++;
           break;
 
-        case "DemoProgress":
-          acc.DemoProgress++;
+        case "DemoDone":
+          acc.DemoDone++;
           break;  
 
         case "Pending":
@@ -270,7 +270,7 @@ const statusCount = useMemo(() => {
       rescheduled: 0,
       success: 0,
       moreDemo: 0,
-      DemoProgress: 0,
+      DemoDone: 0,
       pending: 0,
     }
   );
@@ -606,7 +606,7 @@ const {
                     <th>Demo</th>
                     <th>Follow-up</th>
                     <th>Branch</th>
-                    <th>DemoProgress</th>
+                    <th>Demo Done</th>
                     <th>Rejected</th>
                   </tr>
                 </thead>
@@ -643,9 +643,9 @@ const {
                       <td>
                         <button
                           className="status-btn nointerest"
-                          onClick={() => handleStatusClick("DemoProgress")}
+                          onClick={() => handleStatusClick("DemoDone")}
                         >
-                          {statusCount.DemoProgress}
+                          {statusCount.DemoDone}
                         </button>
                       </td>
 
@@ -789,14 +789,14 @@ const {
                   <h2>{statusCount.busy}</h2>
                 </div>
               
-                {/* DemoProgress */}
+                {/* Demo Done */}
                 <div
                   className="Lead-mobile-status-card demo-progress "
-                  onClick={() => handleStatusClick("DemoProgress")}
+                  onClick={() => handleStatusClick("DemoDone")}
                 >
                   <FaTasks className="status-icon" />
-                  <h4>Demo Progress</h4>
-                  <h2>{statusCount.DemoProgress}</h2>
+                  <h4>Demo Done</h4>
+                  <h2>{statusCount.DemoDone}</h2>
                 </div>
                 
                 {/* Rejected */}
