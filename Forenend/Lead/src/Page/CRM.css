@@ -942,7 +942,7 @@ body{
 .mobile-status-container{
     display:block;
     background:#fff;
-    margin:25px 0px 0px 0px;
+    margin:22px 0px 0px 0px;
     padding:0px 10px 10px 10px;
     border-radius:18px;
     box-shadow:0 5px 15px rgba(0,0,0,.08);
@@ -960,7 +960,7 @@ body{
 .mobile-status-grid{
     display:grid;
     grid-template-columns:repeat(2,1fr);
-    gap:18px;
+    gap:15px;
 }
 
 .mobile-status-card{

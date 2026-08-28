@@ -8,6 +8,7 @@ import Customhook from "../components/Customhook";
 import Skeleton from "react-loading-skeleton";
 import Swal from "sweetalert2";
 import "react-loading-skeleton/dist/skeleton.css";
+import IN from "../assets/images/in.avif";
 import {
   FaCodeBranch,
   FaTasks,
@@ -417,7 +418,7 @@ const {
               <div className="phone-box"> 
                 <div className="phone-input">
                   <div className="india-code">
-                    <img src="https://flagcdn.com/w40/in.png" alt="India" />
+                    <img src={IN} alt="India" />
                       <span>+91</span> 
                   </div> 
                   <input className="phone-number" type="text" inputMode="numeric" maxLength={10} placeholder="Enter mobile number" {...register("mobile", { required: "Mobile number is required", pattern: { value: /^[0-9]{10}$/, message: "Mobile number must be exactly 10 digits", }, })} /> 
