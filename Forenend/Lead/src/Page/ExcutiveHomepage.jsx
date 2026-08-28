@@ -689,9 +689,9 @@ function ExcutiveHomepage() {
 
         <div className="mobile-status-container">
 
-          <h3 className="mobile-title">
+          <p className="para">
             Lead Status
-          </h3>
+          </p>
 
 
           <div className="mobile-status-grid">

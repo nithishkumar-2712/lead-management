@@ -138,10 +138,11 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
+    margin-top:8px;
 }
 .header{
-  font-weight:800;
-  font-size:21px;
+  font-weight:700;
+  font-size:17px;
   text-align: center;
   margin:8px !important;
 }
@@ -224,6 +225,7 @@ body{
   border-radius:15px;
   padding:25px;
   box-shadow:0 10px 25px rgba(0,0,0,.08);
+  margin-top:10px;
 }
 
 .right-box{
@@ -233,7 +235,7 @@ body{
 .right-box h2,
 .left-box h2{
   color:#2563eb;
-  margin-bottom:20px;
+  /* margin-bottom:20px; */
 }
 
 .right-box input{
@@ -332,7 +334,7 @@ body{
   margin:0px;
   color: rgb(35, 33, 33);
   padding: 20px;
-  text-align: left;
+  text-align: center;
   font-size: 22px;
   font-weight: bold;
 }
@@ -841,12 +843,13 @@ body{
 
   .containeerr{
     grid-template-columns:repeat(2,1fr);
-    gap:10px;
+    gap:14px;
   }
 .para{
   text-align: center;
-  font-weight:600;
-  font-size:14px;
+  font-weight:700;
+  font-size:16px;
+  margin:5px;
 }
   .cardd{
     padding:12px;
@@ -939,7 +942,7 @@ body{
 .mobile-status-container{
     display:block;
     background:#fff;
-    margin:10px 0;
+    margin:25px 0px 0px 0px;
     padding:0px 10px 10px 10px;
     border-radius:18px;
     box-shadow:0 5px 15px rgba(0,0,0,.08);
@@ -957,13 +960,13 @@ body{
 .mobile-status-grid{
     display:grid;
     grid-template-columns:repeat(2,1fr);
-    gap:12px;
+    gap:18px;
 }
 
 .mobile-status-card{
     background:#fafafa;
     border-radius:14px;
-    padding:14px 10px;
+    padding:4px 10px;
     text-align:center;
     border:1px solid #eee;
     transition:.3s;
@@ -989,12 +992,12 @@ body{
 .mobile-status-card{
     background:#fafafa;
     border-radius:14px;
-    padding:14px 10px;
+    padding:4px 10px;
     text-align:center;
     border:1px solid #eee;
     transition:.3s;
     cursor:pointer;
-    height: 123px;;
+    height: 105px;;
 }
 .Lead-mobile-status-card{
     background:#fafafa;
@@ -1024,7 +1027,7 @@ body{
 /* Count */
 
 .mobile-status-card h2{
-    font-size:24px;
+    font-size:21px;
     font-weight:700;
     margin-top:3px;
 
@@ -1179,3 +1182,291 @@ body{
     transform: rotate(360deg);
   }
 }
+
+/* =====================================
+   FORM
+===================================== */
+
+.form {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 3fr);
+  gap: 8px;
+  align-items: center;
+}
+
+
+/* =====================================
+   PHONE BOX - 70%
+===================================== */
+
+.form .phone-box {
+  width: 100%;
+  max-width: none;
+  padding: 0;
+  margin: 0;
+}
+
+.form .phone-input {
+  width: 100%;
+  height: 58px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 14px;
+
+  background: #fff;
+  border: 1.5px solid #dfe3eb;
+  border-radius: 12px;
+
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+
+  overflow: hidden;
+}
+
+
+/* =====================================
+   INDIA CODE
+===================================== */
+
+.form .india-code {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  padding-right: 12px;
+  margin-right: 12px;
+
+  border-right: 1px solid #e5e7eb;
+
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.form .india-code img {
+  width: 40px;
+  height: 30px;
+
+  object-fit: cover;
+  border-radius: 3px;
+
+  display: block;
+}
+
+.form .india-code span {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+
+/* =====================================
+   PHONE INPUT
+===================================== */
+
+.form .phone-number {
+  flex: 1;
+
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  border: none !important;
+  outline: none !important;
+
+  background: #fff !important;
+
+  font-size: 15px;
+  color: #111827;
+}
+
+.form .phone-number::placeholder {
+  color: #9ca3af;
+}
+
+
+/* Remove autofill blue */
+
+.form .phone-number:-webkit-autofill,
+.form .phone-number:-webkit-autofill:hover,
+.form .phone-number:-webkit-autofill:focus,
+.form .phone-number:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+  box-shadow: 0 0 0 1000px #fff inset !important;
+
+  -webkit-text-fill-color: #111827 !important;
+}
+
+
+/* =====================================
+   CHECK BUTTON - 30%
+===================================== */
+
+.form .check-btn {
+  width: 100%;
+  height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 0 10px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #2563eb;
+  color: #fff;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+/* =====================================
+   TABLET
+===================================== */
+
+@media (max-width: 768px) {
+
+  .form {
+    width: 100%;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 3fr);
+    gap: 6px;
+  }
+
+  .form .phone-input {
+    height: 47px;
+    padding: 0 8px;
+    border-radius: 10px;
+  }
+
+  .form .check-btn {
+    height: 47px;
+    font-size: 14px;
+    border-radius: 9px;
+  }
+
+  .form .india-code {
+    gap: 5px;
+    padding-right: 6px;
+    margin-right: 6px;
+  }
+
+  .form .india-code img {
+    width: 21px;
+    height: 16px;
+  }
+
+  .form .india-code span {
+    font-size: 13px;
+  }
+
+  .form .phone-number {
+    font-size: 14px;
+  }
+}
+
+
+/* =====================================
+   SMALL MOBILE
+===================================== */
+
+@media (max-width: 480px) {
+
+  .form {
+    width: 100%;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 3fr);
+    gap: 5px;
+  }
+
+  .form .phone-box {
+    width: 100%;
+  }
+
+  .form .phone-input {
+    width: 100%;
+    height: 45px;
+
+    padding: 0 7px;
+    border-radius: 9px;
+  }
+
+  .form .check-btn {
+    width: 100%;
+    height: 45px;
+
+    font-size: 13px;
+    padding: 0 5px;
+  }
+
+  .form .india-code {
+    gap: 4px;
+    padding-right: 5px;
+    margin-right: 5px;
+  }
+
+  .form .india-code img {
+    width: 20px;
+    height: 15px;
+  }
+
+  .form .india-code span {
+    font-size: 12px;
+  }
+
+  .form .phone-number {
+    font-size: 13px;
+  }
+}
+
+
+/* =====================================
+   FOCUS
+===================================== */
+
+.form .phone-input:focus-within {
+  border-color: #2563eb;
+
+  box-shadow:
+    0 0 0 3px rgba(37, 99, 235, 0.1),
+    0 5px 20px rgba(0, 0, 0, 0.06);
+}
+
+
+/* =====================================
+   CHECK SPINNER
+===================================== */
+
+.check-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.check-spinner {
+  width: 15px;
+  height: 15px;
+
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top: 2px solid #fff;
+
+  border-radius: 50%;
+
+  animation: checkSpin 0.7s linear infinite;
+}
+
+@keyframes checkSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.mobile-error { color: #ef4444; font-size: 12px; margin: 5px 0 0 4px; font-weight: 500; }

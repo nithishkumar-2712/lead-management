@@ -412,44 +412,21 @@ const {
         <div className={`lead-section ${showTable ? "show-table" : "hide-table"}`}>
           <div className="right-box">
               <h2>Check Mobile Number</h2>
-              <form className="form" onSubmit={handleSubmit(onSubmit)}>
-
-                <input
-                  type="text"
-                  inputMode="numeric"
-                  maxLength={10}
-                  placeholder="Enter mobile number"
-                  {...register("mobile", {
-                    required: "Mobile number is required",
-                    pattern: {
-                      value: /^[0-9]{10}$/,
-                      message: "Mobile number must be exactly 10 digits",
-                    },
-                  })}
-                />
-
-                {errors.mobile && (
-                  <p style={{ color: "red" }}>
-                    {errors.mobile.message}
-                  </p>
-                )}
-
-                <button
-                  type="submit"
-                  disabled={isChecking}
-                  className="check-btn"
-                >
-                  {isChecking ? (
-                    <>
-                      <span className="check-spinner"></span>
-                      Checking...
-                    </>
-                  ) : (
-                    "Check"
-                  )}
-                </button>
-
-              </form>
+            <form className="form" onSubmit={handleSubmit(onSubmit)}>
+               {/* Mobile Number - 70% */}
+              <div className="phone-box"> 
+                <div className="phone-input">
+                  <div className="india-code">
+                    <img src="https://flagcdn.com/w40/in.png" alt="India" />
+                      <span>+91</span> 
+                  </div> 
+                  <input className="phone-number" type="text" inputMode="numeric" maxLength={10} placeholder="Enter mobile number" {...register("mobile", { required: "Mobile number is required", pattern: { value: /^[0-9]{10}$/, message: "Mobile number must be exactly 10 digits", }, })} /> 
+                </div>
+                {errors.mobile && ( <p className="mobile-error"> {errors.mobile.message} </p> )} 
+                </div> {/* Check Button - 30% */} 
+                <button type="submit" disabled={isChecking} className="check-btn" > {isChecking ? ( <> <span className="check-spinner"></span> Checking... </> ) : ( "Check" )} 
+                </button> 
+             </form>
               {/* <p className="hint">
                 Enter a valid 10-digit number
               </p> */}
