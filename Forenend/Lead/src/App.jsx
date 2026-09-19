@@ -42,6 +42,8 @@ import AdminInsulationpage from './Page/AdminInsulationpage';
 import Excutivecell from './Page/Excutivecell';
 import ExcutiveHomepage from './Page/ExcutiveHomepage';
 import OwnLeads from './Page/OwnLeads';
+import ResetPassword from "./Page/ResetPassword ";
+import ForgotPassword from "./Page/ForgotPassword";
 export const AppContext=createContext()
 
 function App() {
@@ -95,6 +97,8 @@ const tokencheck = async () => {
             <Route path="/Services" element={<Services/>} />
             <Route path="/Contact" element={<Contact/>} />
             <Route path="/signin" element={<Login />} />
+            <Route path="/reset-password/:token" element={<ResetPassword />} />
+            <Route path="/ForgotPassword" element={<ForgotPassword/>} />
             {/* <Route path="/signup" element={<Navigate to="/" />} /> */}
             </>
           ):(

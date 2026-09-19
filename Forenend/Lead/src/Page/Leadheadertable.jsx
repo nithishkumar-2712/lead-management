@@ -459,9 +459,7 @@ const DemoDoneStatus = statusName === "DemoDone";
                         <label>Remarks</label>
                         <textarea
                          rows="4"
-                            {...register("remarks", {
-                            required: "Remarks Required",
-                            })}
+                            {...register("remarks")}
                         />
                     </div>
 

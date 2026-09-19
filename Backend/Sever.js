@@ -15,6 +15,7 @@ const Role = require("./routes/Role.routes");
 const DBconnection = require("./config/db");
 const http=require("http");
 const {Server}=require("socket.io");
+const Forgetpasswordroutes = require("./routes/Forgetpasswordroutes");
 const app=express();
 const server= http.createServer(app);
 require("dotenv").config();
@@ -30,7 +31,8 @@ app.use(cookieParser())
 app.use(
   cors({
     origin: [
-      process.env.Backend_url
+      process.env.Backend_url,
+      console.log( process.env.Backend_url)
     ],
     credentials: true,
   })
@@ -62,6 +64,8 @@ app.use(branch);
 app.use(businessType);
 app.use(leadStatus);
 app.use(Role);
+app.use(Forgetpasswordroutes);
+
 
 server.listen(process.env.PORT, "0.0.0.0", () => {
   console.log(`🚀 Server running on port ${process.env.PORT}`);

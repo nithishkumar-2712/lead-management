@@ -83,7 +83,6 @@ const LeadTable = ({ data }) => {
                   <th>Company-Name</th>
                   <th>Person</th>
                   <th>Mobile</th>
-                  <th>Business</th>
                   <th>priority</th>
                   <th>Status</th>
                   <th>Remarks</th>
@@ -128,7 +127,6 @@ const LeadTable = ({ data }) => {
                       <td>{item.companyName}</td>
                       <td>{item.contactPerson}</td>
                       <td>{item.mobile}</td>
-                      <td>{item.businessType.name}</td>
                       <td>{item.priority}</td>
                       <td>{item.status?.name}</td>
                       <td>{item.remarks}</td>
@@ -141,6 +139,11 @@ const LeadTable = ({ data }) => {
                             {hasValue(item.companyName) && (
                               <p>
                                 <b>Company Name :</b> {item.companyName}
+                              </p>
+                            )}
+                            {hasValue(item.businessType) && (
+                              <p>
+                                <b>BusinessType  :</b> {item.businessType.name}
                               </p>
                             )}
 

@@ -3,6 +3,7 @@ const LeadModel = require("../models/Lead");
 const LeadstatusModel = require("../models/leadStatus.model");
 const RoleModel = require("../models/Role.model");
 const UserModel = require("../models/user.model");
+const {sendLeadAssignedEmail} = require("../utils/sendEmail");
 
 const getLeadByCalledMobileNumber = async (req, res) => {
   try {
@@ -83,7 +84,9 @@ const updateLead = async (req, res) => {
       referenceDetails,
     } = req.body;
 
-    let branchHeadId = null;
+     let branchHeadId = null;
+    let branchHeadEmail = null;
+    let branchName = null;
 
     // =====================================
     // FIND BRANCH HEAD
@@ -115,6 +118,8 @@ const updateLead = async (req, res) => {
       }
 
       branchHeadId = branchHead._id;
+      branchHeadEmail = branchHead.Email;
+      branchName = branchHead.branch.branchName;
 
       // console.log("Branch Head ID:", branchHeadId);
     }
@@ -170,6 +175,16 @@ const updateLead = async (req, res) => {
     }
 
     global.io.emit("leadUpdated");
+
+    if (branchHeadEmail) {
+    await sendLeadAssignedEmail({
+      email: branchHeadEmail,
+      companyName: lead.companyName,
+      contactPerson: lead.contactPerson,
+      contactNo: lead.contactNo,
+      branchName: branchName,
+    });
+  }
 
     // =====================================
     // RESPONSE
@@ -484,6 +499,28 @@ const assignExecutive = async (req, res) => {
   try {
     const { id } = req.params;
     const { assignedExecutive } = req.body;
+    // FIND EXECUTIVE
+    // =====================================
+    let executiveEmail = null;
+    let branchName = null;
+
+    if (assignedExecutive) {
+      const executive = await UserModel.findById(
+        assignedExecutive
+      ).populate("branch");
+
+      if (!executive) {
+        return res.status(404).json({
+          success: false,
+          message: "Executive not found",
+        });
+      }
+
+      executiveEmail = executive.Email;
+
+      // Change branchName according to your Branch schema
+      branchName = executive.branch?.branchName;
+    }
 
     const lead = await LeadModel.findByIdAndUpdate(
       id,
@@ -517,6 +554,16 @@ const assignExecutive = async (req, res) => {
 
     // Update all connected clients
     global.io.emit("leadUpdated");
+
+    if (executiveEmail) {
+      await sendLeadAssignedEmail({
+        email: executiveEmail,
+        companyName: lead.companyName,
+        contactPerson: lead.contactPerson,
+        contactNo: lead.contactNo || lead.mobile,
+        branchName: branchName,
+      });
+    }
 
     return res.status(200).json({
       success: true,

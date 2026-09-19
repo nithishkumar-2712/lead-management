@@ -186,17 +186,17 @@ function ExcutiveHomepage() {
             acc.demo++;
             break;
 
-          case "Yes":
-            acc.yes++;
-            break;
+          // case "Yes":
+          //   acc.yes++;
+          //   break;
 
-          case "Busy / Call Later":
+          case "Busy / Call Later / Rescheduled / Pending":
             acc.busy++;
             break;
 
-          case "Rescheduled":
-            acc.rescheduled++;
-            break;
+          // case "Rescheduled":
+          //   acc.rescheduled++;
+          //   break;
 
           case "DemoDone":
             acc.DemoDone++;
@@ -206,11 +206,11 @@ function ExcutiveHomepage() {
             acc.success++;
             break;
 
-          case "Pending":
-            acc.pending++;
-            break;
+          // case "Pending":
+          //   acc.pending++;
+          //   break;
 
-          case "Rejected":
+          case "Rejected / No Interest":
             acc.rejected++;
             break;
 
@@ -223,12 +223,12 @@ function ExcutiveHomepage() {
       },
       {
         demo: 0,
-        yes: 0,
-        callAgain: 0,
-        rescheduled: 0,
+        // yes: 0,
+        // callAgain: 0,
+        // rescheduled: 0,
         DemoDone: 0,
         success: 0,
-        pending: 0,
+        // pending: 0,
         rejected: 0,
         busy: 0,
       }
@@ -534,8 +534,8 @@ function ExcutiveHomepage() {
 
               <tr>
                 <th>Demo Assigned</th>
-                <th>Yes</th>
-                <th>Call Again</th>
+                {/* <th>Yes</th>
+                <th>Call Again</th> */}
                 <th>DemoDone</th>
               </tr>
 
@@ -560,7 +560,7 @@ function ExcutiveHomepage() {
                 </td>
 
 
-                <td>
+                {/* <td>
 
                   <button
                     className="status-btn success"
@@ -571,10 +571,10 @@ function ExcutiveHomepage() {
                     {statusCount.yes}
                   </button>
 
-                </td>
+                </td> */}
 
 
-                <td>
+                {/* <td>
 
                   <button
                     className="status-btn busy"
@@ -585,7 +585,7 @@ function ExcutiveHomepage() {
                     {statusCount.callAgain}
                   </button>
 
-                </td>
+                </td> */}
 
 
                 <td>
@@ -653,7 +653,7 @@ function ExcutiveHomepage() {
                     className="status-btn demo"
                     onClick={() =>
                       handleStatusClick(
-                        "Busy / Call Later"
+                        "Busy / Call Later / Rescheduled / Pending"
                       )
                     }
                   >
@@ -668,7 +668,7 @@ function ExcutiveHomepage() {
                   <button
                     className="status-btn Danger"
                     onClick={() =>
-                      handleStatusClick("Rejected")
+                      handleStatusClick("Rejected / No Interest")
                     }
                   >
                     {statusCount.rejected}
@@ -724,7 +724,7 @@ function ExcutiveHomepage() {
               className="mobile-status-card call"
               onClick={() =>
                 handleStatusClick(
-                  "Busy / Call Later"
+                  "Busy / Call Later / Rescheduled / Pending"
                 )
               }
             >
@@ -740,7 +740,7 @@ function ExcutiveHomepage() {
             <div
               className="mobile-status-card pending"
               onClick={() =>
-                handleStatusClick("Rejected")
+                handleStatusClick("Rejected / No Interest")
               }
             >
 

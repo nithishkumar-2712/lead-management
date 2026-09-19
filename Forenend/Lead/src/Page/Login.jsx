@@ -173,6 +173,15 @@ const onSubmit = async (send) => {
                 "LOGIN"
               )}
             </button>
+            <div className="forgot-password">
+              <button
+                type="button"
+                onClick={() => navigate("/ForgotPassword")}
+              >
+                Forgot Password?
+              </button>
+            </div>
+
 
           </form>
         </div>

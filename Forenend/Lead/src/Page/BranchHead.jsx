@@ -148,16 +148,12 @@ function BranchHead() {
         }
 
         switch (status) {
-          case "Yes":
-            acc.yes++;
+          case "Rejected / No Interest":
+            acc.rejected++;
             break;
 
-          case "Call Again":
-            acc.callAgain++;
-            break;
-
-          case "Rescheduled":
-            acc.rescheduled++;
+          case "Busy / Call Later / Rescheduled / Pending":
+            acc.busy++;
             break;
 
           case "Success":
@@ -168,21 +164,27 @@ function BranchHead() {
             acc.DemoDone++;
             break;
 
-         case "Pending":
-            acc.pending++;
-            break;
+        //   case "Yes":
+        //     acc.yes++;
+        //     break;
 
-          case "More Demo":
-            acc.moreDemo++;
-            break;
+        //   case "Call Again":
+        //     acc.callAgain++;
+        //     break;
 
-          case "Rejected":
-            acc.rejected++;
-            break;
+        //   case "Rescheduled":
+        //     acc.rescheduled++;
+        //     break;
 
-          case "Busy / Call Later":
-            acc.busy++;
-            break;
+        //  case "Pending":
+        //     acc.pending++;
+        //     break;
+
+        //   case "More Demo":
+        //     acc.moreDemo++;
+        //     break;
+
+
 
           default:
             break;
@@ -193,15 +195,15 @@ function BranchHead() {
       {
         demo: 0,
         executive: 0,
-        yes: 0,
-        callAgain: 0,
-        rescheduled: 0,
         success: 0,
         DemoDone: 0,
-        moreDemo: 0,
         rejected: 0,
-        pending: 0,
         busy: 0,
+        // yes: 0,
+        // callAgain: 0,
+        // rescheduled: 0,
+        // moreDemo: 0,
+        // pending: 0,
       }
     );
   }, [filteredLeads]);
@@ -470,6 +472,7 @@ function BranchHead() {
               <tr>
                 <th>Demo Assigned</th>
                 <th>Executive Assigned</th>
+                <th>Follow-up</th>
               </tr>
             </thead>
 
@@ -498,6 +501,20 @@ function BranchHead() {
                   </button>
                 </td>
 
+                <td>
+                  <button
+                    className="status-btn busy"
+                    onClick={() =>
+                      handleStatusClick(
+                        "Busy / Call Later / Rescheduled / Pending"
+                      )
+                    }
+                  >
+                    {statusCount.busy}
+                  </button>
+                </td>
+
+
               </tr>
             </tbody>
           </table>
@@ -515,8 +532,8 @@ function BranchHead() {
             <thead>
               <tr>
                 <th>Rejected</th>
-                <th>Follow-up</th>
                 <th>Demo Done</th>
+                <th>Success</th>
               </tr>
             </thead>
 
@@ -527,23 +544,10 @@ function BranchHead() {
                   <button
                     className="status-btn Danger"
                     onClick={() =>
-                      handleStatusClick("Rejected")
+                      handleStatusClick("Rejected / No Interest")
                     }
                   >
                     {statusCount.rejected}
-                  </button>
-                </td>
-
-                <td>
-                  <button
-                    className="status-btn busy"
-                    onClick={() =>
-                      handleStatusClick(
-                        "Busy / Call Later"
-                      )
-                    }
-                  >
-                    {statusCount.busy}
                   </button>
                 </td>
 
@@ -560,6 +564,17 @@ function BranchHead() {
                   </button>
                 </td>
 
+                <td>
+                  <button
+                    className="status-btn success"
+                    onClick={() =>
+                      handleStatusClick("Success")
+                    }
+                  >
+                    {statusCount.success}
+                  </button>
+                </td>
+
               </tr>
             </tbody>
 
@@ -569,7 +584,7 @@ function BranchHead() {
 
         {/* ================= DEMO RESULT ================= */}
 
-        <div className="section">
+        {/* <div className="section">
 
           <h3>Demo Result</h3>
 
@@ -586,16 +601,7 @@ function BranchHead() {
             <tbody>
               <tr>
 
-                <td>
-                  <button
-                    className="status-btn success"
-                    onClick={() =>
-                      handleStatusClick("Success")
-                    }
-                  >
-                    {statusCount.success}
-                  </button>
-                </td>
+
 
                 <td>
                   <button
@@ -624,7 +630,7 @@ function BranchHead() {
 
           </table>
 
-        </div>
+        </div> */}
 
         {/* ================= MOBILE STATUS ================= */}
 
@@ -670,7 +676,7 @@ function BranchHead() {
             <div
               className="mobile-status-card pending"
               onClick={() =>
-                handleStatusClick("Rejected")
+                handleStatusClick("Rejected / No Interest")
               }
             >
               <FaTimesCircle className="status-icon" />
@@ -683,7 +689,7 @@ function BranchHead() {
               className="mobile-status-card call"
               onClick={() =>
                 handleStatusClick(
-                  "Busy / Call Later"
+                  "Busy / Call Later / Rescheduled / Pending"
                 )
               }
             >

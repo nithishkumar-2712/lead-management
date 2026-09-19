@@ -421,3 +421,22 @@
 .password-eye:hover {
   color: #2563eb;
 }
+.forgot-password {
+  text-align: center;
+  margin-top: 5px;
+}
+
+.forgot-password button {
+  border: none;
+  background: transparent;
+  color: #2563eb;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.forgot-password button:hover {
+  text-decoration: underline;
+  color: #1d4ed8;
+}

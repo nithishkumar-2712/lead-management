@@ -214,45 +214,45 @@ const statusCount = useMemo(() => {
       }
 
       switch (status) {
-        case "Busy / Call Later":
+        case "Busy / Call Later / Rescheduled / Pending":
           acc.busy++;
           break;
 
-        case "No Interest":
-          acc.noInterest++;
-          break;
-
-        case "Rejected":
+        case "Rejected / No Interest":
           acc.rejected++;
           break;
-
-        case "Yes":
-          acc.yes++;
-          break;
-
-        case "Call Again":
-          acc.callAgain++;
-          break;
-
-        case "Rescheduled":
-          acc.rescheduled++;
-          break;
-
-        case "Success":
+          case "Success":
           acc.success++;
           break;
-
-        case "More Demo":
-          acc.moreDemo++;
-          break;
-
+          
         case "DemoDone":
           acc.DemoDone++;
-          break;  
-
-        case "Pending":
-          acc.pending++;
           break;
+
+        // case "No Interest":
+        //   acc.noInterest++;
+        //   break;
+
+        // case "Yes":
+        //   acc.yes++;
+        //   break;
+
+        // case "Call Again":
+        //   acc.callAgain++;
+        //   break;
+
+        // case "Rescheduled":
+        //   acc.rescheduled++;
+        //   break;
+
+        // case "More Demo":
+        //   acc.moreDemo++;
+        //   break;
+  
+
+        // case "Pending":
+        //   acc.pending++;
+        //   break;
 
         default:
           break;
@@ -264,15 +264,15 @@ const statusCount = useMemo(() => {
       demo: 0,
       busy: 0,
       branch: 0,
-      noInterest: 0,
       rejected: 0,
-      yes: 0,
-      callAgain: 0,
-      rescheduled: 0,
       success: 0,
-      moreDemo: 0,
       DemoDone: 0,
-      pending: 0,
+      // noInterest: 0,
+      // yes: 0,
+      // callAgain: 0,
+      // rescheduled: 0,
+      // moreDemo: 0,
+      // pending: 0,
     }
   );
 }, [filteredLeads]);
@@ -584,8 +584,7 @@ const {
                     <th>Demo</th>
                     <th>Follow-up</th>
                     <th>Branch</th>
-                    <th>Demo Done</th>
-                    <th>Rejected</th>
+
                   </tr>
                 </thead>
 
@@ -603,7 +602,7 @@ const {
                       <td>
                         <button
                           className="status-btn busy"
-                          onClick={() => handleStatusClick("Busy / Call Later")}
+                          onClick={() => handleStatusClick("Busy / Call Later / Rescheduled / Pending")}
                         >
                           {statusCount.busy}
                         </button>
@@ -618,23 +617,7 @@ const {
                       </button>
                       </td>
 
-                      <td>
-                        <button
-                          className="status-btn nointerest"
-                          onClick={() => handleStatusClick("DemoDone")}
-                        >
-                          {statusCount.DemoDone}
-                        </button>
-                      </td>
 
-                      <td>
-                        <button
-                          className="status-btn rejected"
-                          onClick={() => handleStatusClick("Rejected")}
-                        >
-                          {statusCount.rejected}
-                        </button>
-                      </td>
                     </tr>
                   </tbody>
               </table>
@@ -647,37 +630,37 @@ const {
               <table>
                 <thead>
                   <tr>
-                    <th>Yes</th>
-                    <th>Call Again</th>
-                    <th>Rescheduled</th>
-                    {/* <th>Rejected</th> */}
+                    <th>success</th>
+                    <th>Demo Done</th>
+                    <th>Rejected</th>
                   </tr>
                 </thead>
 
                 <tbody>
                   <tr>
                     <td>
-                    <button
-                    className="status-btn success"
-                    onClick={() => handleStatusClick("Yes")}
-                    >
-                    {statusCount.yes}
-                    </button>
-                    </td>
-                    <td>
                       <button
-                      className="status-btn busy"
-                      onClick={() => handleStatusClick("Call Again")}
+                      className="status-btn success"
+                      onClick={() => handleStatusClick("Success")}
                       >
-                      {statusCount.callAgain}
+                      {statusCount.success}
                       </button>
                     </td>
                     <td>
                       <button
-                      className="status-btn branch"
-                      onClick={() => handleStatusClick("Rescheduled")}
+                        className="status-btn nointerest"
+                        onClick={() => handleStatusClick("DemoDone")}
                       >
-                      {statusCount.rescheduled}
+                      {statusCount.DemoDone}
+                      </button>
+                    </td>
+
+                      <td>
+                        <button
+                          className="status-btn rejected"
+                          onClick={() => handleStatusClick("Rejected / No Interest")}
+                        >
+                          {statusCount.rejected}
                       </button>
                     </td>
                   </tr>
@@ -686,7 +669,7 @@ const {
             </div>
 
             {/* Demo Result */}
-            <div className="section">
+            {/* <div className="section">
               <h3>Demo Result</h3>
 
               <table>
@@ -695,7 +678,7 @@ const {
                     <th>Success</th>
                     <th>More Demo</th>
                     <th>Pending</th>
-                    {/* <th>Rejected</th> */}
+
                   </tr>
                 </thead>
 
@@ -728,7 +711,7 @@ const {
                   </tr>
                 </tbody>
               </table>
-            </div>
+            </div> */}
 
             {/* Mobli Screen */}
             <div className="mobile-status-container">
@@ -760,7 +743,7 @@ const {
                   {/* Call Later */}
                 <div
                   className="Lead-mobile-status-card call"
-                  onClick={() => handleStatusClick("Busy / Call Later")}
+                  onClick={() => handleStatusClick("Busy / Call Later / Rescheduled / Pending")}
                 >
                   <FaPhoneVolume className="status-icon" />
                   <h4>Follow-up</h4>
@@ -780,7 +763,7 @@ const {
                 {/* Rejected */}
                 <div
                   className="Lead-mobile-status-card pending"
-                  onClick={() => handleStatusClick("Rejected")}
+                  onClick={() => handleStatusClick("Rejected / No Interest")}
                 >
                   <FaTimesCircle className="status-icoon" />
                   <h4>Rejected</h4>
