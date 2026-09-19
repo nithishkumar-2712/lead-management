@@ -17,7 +17,6 @@ import LeadEdit from './Page/LeadEdit';
 import LeadUpdate from './Page/LeadUpdate';
 import Executives from './Page/Executives';
 import ExecutivesReport from './Page/ExecutivesReport';
-import SingleCustomerid from './SingleCustomerid';
 import LeadFormUpdate from './Page/LeadFormUpdate';
 import BranchHead from './Page/BranchHead';
 import Register from './Page/Register';
