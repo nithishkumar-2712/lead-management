@@ -121,7 +121,7 @@ const tokencheck = async () => {
               <Route path="/Executives" element={<Executives/>} />
               <Route path="/LeadView/:id" element={<LeadView/>} />
               <Route path="/ExecutivesReport" element={<ExecutivesReport/>} />
-              <Route path="/SingleCustomerid" element={<SingleCustomerid/>} />
+              {/* <Route path="/SingleCustomerid" element={<SingleCustomerid/>}/> */}
             </>
           )}
           {Role === "Executives" && (
@@ -132,7 +132,7 @@ const tokencheck = async () => {
               <Route path="/Executives" element={<Executives/>} />
               <Route path="/LeadView/:id" element={<LeadView/>} />
               <Route path="/ExecutivesReport" element={<ExecutivesReport/>} />
-              <Route path="/SingleCustomerid" element={<SingleCustomerid/>} />
+              {/* <Route path="/SingleCustomerid" element={<SingleCustomerid/>} /> */}
               <Route path="/ExcutiveHomepage" element={<ExcutiveHomepage/>} />
             </>  
           )}
