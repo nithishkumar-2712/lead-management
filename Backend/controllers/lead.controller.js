@@ -3,7 +3,8 @@ const LeadModel = require("../models/Lead");
 const LeadstatusModel = require("../models/leadStatus.model");
 const RoleModel = require("../models/Role.model");
 const UserModel = require("../models/user.model");
-const {sendLeadAssignedEmail} = require("../utils/sendEmail");
+// const {sendLeadAssignedEmail} = require("../utils/sendEmail");
+// const {sendWhatsAppMessage }=require("../services/whatsappService.js")
 
 const getLeadByCalledMobileNumber = async (req, res) => {
   try {
@@ -85,8 +86,8 @@ const updateLead = async (req, res) => {
     } = req.body;
 
      let branchHeadId = null;
-    let branchHeadEmail = null;
-    let branchName = null;
+    let branchHeadMoblie = null;
+    let branchHeadName = null;
 
     // =====================================
     // FIND BRANCH HEAD
@@ -118,8 +119,8 @@ const updateLead = async (req, res) => {
       }
 
       branchHeadId = branchHead._id;
-      branchHeadEmail = branchHead.Email;
-      branchName = branchHead.branch.branchName;
+      branchHeadMoblie = branchHead.Number;
+      branchHeadName = branchHead.username;
 
       // console.log("Branch Head ID:", branchHeadId);
     }
@@ -176,15 +177,29 @@ const updateLead = async (req, res) => {
 
     global.io.emit("leadUpdated");
 
-    if (branchHeadEmail) {
-    await sendLeadAssignedEmail({
-      email: branchHeadEmail,
-      companyName: lead.companyName,
-      contactPerson: lead.contactPerson,
-      contactNo: lead.contactNo,
-      branchName: branchName,
-    });
-  }
+  //   if (branchHeadEmail) {
+  //   await sendLeadAssignedEmail({
+  //     email: branchHeadEmail,
+  //     companyName: lead.companyName,
+  //     contactPerson: lead.contactPerson,
+  //     contactNo: lead.contactNo,
+  //     branchName: branchName,
+  //   });
+  // }
+// await sendWhatsAppMessage(
+//   branchHeadMoblie,
+//   `Hello ${branchHeadName} Sir,
+
+// New Lead Assigned
+
+// Customer Name: ${lead.contactPerson}
+// Customer Mobile: ${lead.mobile}
+// Company Name: ${lead.companyName || "N/A"}
+// Assigned Date: ${new Date().toLocaleDateString("en-IN")}
+// Please review the lead and proceed with the necessary follow-up.
+// Regards,
+// JJ Enterprises`
+// );
 
     // =====================================
     // RESPONSE
@@ -501,8 +516,8 @@ const assignExecutive = async (req, res) => {
     const { assignedExecutive } = req.body;
     // FIND EXECUTIVE
     // =====================================
-    let executiveEmail = null;
-    let branchName = null;
+    let executiveNumber = null;
+    let branchExcutiveName = null;
 
     if (assignedExecutive) {
       const executive = await UserModel.findById(
@@ -516,10 +531,10 @@ const assignExecutive = async (req, res) => {
         });
       }
 
-      executiveEmail = executive.Email;
+      executiveNumber = executive.Number;
 
       // Change branchName according to your Branch schema
-      branchName = executive.branch?.branchName;
+      branchExcutiveName = executive.username;
     }
 
     const lead = await LeadModel.findByIdAndUpdate(
@@ -555,15 +570,29 @@ const assignExecutive = async (req, res) => {
     // Update all connected clients
     global.io.emit("leadUpdated");
 
-    if (executiveEmail) {
-      await sendLeadAssignedEmail({
-        email: executiveEmail,
-        companyName: lead.companyName,
-        contactPerson: lead.contactPerson,
-        contactNo: lead.contactNo || lead.mobile,
-        branchName: branchName,
-      });
-    }
+    // if (executiveEmail) {
+    //   await sendLeadAssignedEmail({
+    //     email: executiveEmail,
+    //     companyName: lead.companyName,
+    //     contactPerson: lead.contactPerson,
+    //     contactNo: lead.contactNo || lead.mobile,
+    //     branchName: branchName,
+    //   });
+    // }
+    // await sendWhatsAppMessage(
+    //   executiveNumber,
+    //   `Hello ${branchExcutiveName} Sir ,
+
+    //   New Lead Assigned By Branch Head 
+
+    //   Customer Name: ${lead.contactPerson}
+    //   Customer Mobile: ${lead.mobile}
+    //   Company Name: ${lead.companyName || "N/A"}
+    //   Assigned Date: ${new Date().toLocaleDateString("en-IN")}
+    //   Please review the lead and proceed with the necessary follow-up.
+    //   Regards,
+    //   JJ Enterprises`
+    // );
 
     return res.status(200).json({
       success: true,

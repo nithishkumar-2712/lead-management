@@ -620,6 +620,7 @@ body{
   font-size: 17px;
   font-weight: 700;
   color: #fff;
+  background-color: #06B6D4;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 5px 15px rgba(0,0,0,0.15);
